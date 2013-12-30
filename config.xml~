@@ -24,6 +24,7 @@
 		Clemens Brunner
     </author>
 
-    <access origin="http://mtoserver.dyndns.org/mto/sql.php" subdomains="true" />
+    <!--access origin="http://mtoserver.dyndns.org/mto/sql.php" subdomains="true" />
+    <access origin="http://mtoserver.dyndns.org/" subdomains="true" /-->
 
 </widget>
