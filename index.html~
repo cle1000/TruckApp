@@ -14,9 +14,10 @@
     <!-- mto custom styles -->
      <link href="css/style.css" rel="stylesheet" type="text/css" /> 
 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	
 	<script src="scripts/jquery.jsonp-2.1.4.min.js"></script>
 
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script-->
 	<script src="http://code.angularjs.org/1.1.1/angular.js"></script>
 	<script src="scripts/app.js"></script>
     <!-- include jquery and jquery-ui -->
@@ -266,7 +267,7 @@
 
     <div data-role="header" data-add-back-btn="true" data-back-btn-text="Zurück">
         <h1>Angebote</h1>
-		<button ng-click="loadData() class="ui-btn-right"">Refresh</button>
+		<button ng-click="loadData()" class="ui-btn-right">Refresh</button>
     </div><!-- /header -->
 
     <div role="main" class="ui-content">
