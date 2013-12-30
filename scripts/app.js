@@ -25,28 +25,14 @@ function InputDataCtrl($scope, $http) {
             url: 'http://mtoserver.dyndns.org/mto/sql.php',
             callbackParameter: 'callback',
             success: function(data, status) {
-                alert(JSON.stringify(data));
+                $scope.inputDatas = data;
             },
             error: function() {
-                alert("error");
+                alert("Keine Internetverbindung...");
             }
         });
     };
 */
-
-    $scope.reloadData = function() {
-        for (i = 0; i < $scope.inputDatas.length; i++) {
-            $scope.inputDatas.splice(i);
-        }
-        $http.jsonp('http://mtoserver.dyndns.org/mto/sql.php?callback=JSON_CALLBACK'
-                ).then(function(response) {
-
-            for (i = 0; i < response.data.length; i++) {
-                $scope.inputDatas.push(response.data[i]);
-            }
-        });
-
-    };
     $scope.loadData();
 }
 
