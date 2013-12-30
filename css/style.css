@@ -1,0 +1,48 @@
+form legend {
+    background: none repeat scroll 0 0 #E9E9E9;
+    border-top: 1px solid #DDDDDD;
+    border-bottom: 1px solid #DDDDDD;
+    color: #333333;
+    display: block;
+    font-weight: 700;
+    margin: 0 -1em 1em;
+    overflow: hidden;
+    padding: 0.4em 1em;
+    position: relative;
+    text-align: left;
+    text-shadow: 0 1px 0 #EEEEEE;
+    width: 100%;
+}
+
+form legend.first {
+   margin: -0.5em -1em 1em;
+    border-top: none;
+}
+
+#lkw legend {
+    background: none repeat scroll 0 0 #1D1D1D;
+    border-color: #1B1B1B;
+    color: #FFFFFF;
+    font-weight: 700;
+    text-shadow: 0 1px 0 #111111;
+}
+
+form label.required:after {
+    color: #FF0000;
+    content: " *";
+}
+
+#lkw .ui-datepicker-calendar td, #lkw .ui-datepicker .ui-datepicker-header {
+    background: none repeat scroll 0 0 #2A2A2A;
+    border-color: #1D1D1D;
+    color: #FFFFFF;
+    text-shadow: 0 1px 0 #111111;
+}
+
+#lkw .ui-datepicker-calendar th {
+    background: none repeat scroll 0 0 #1D1D1D;
+    border-color: #1B1B1B;
+    color: #FFFFFF;
+    font-weight: 700;
+    text-shadow: 0 1px 0 #111111;
+}

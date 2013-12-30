@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="de" ng-app="truckApp">
+<head>
+    <meta charset="utf-8">
+
+    <title>mto - multimodaler transport operator</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- styles for jquery-mobile and datepicker -->
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.0.min.css" />
+   <link rel="stylesheet" href="css/jquery.mobile.datepicker.css" />
+
+    <!-- mto custom styles -->
+     <link href="css/style.css" rel="stylesheet" type="text/css" /> 
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<script src="scripts/jquery.jsonp-2.1.4.min.js"></script>
+
+	<script src="http://code.angularjs.org/1.1.1/angular.js"></script>
+	<script src="scripts/app.js"></script>
+    <!-- include jquery and jquery-ui -->
+    <script src="scripts/jquery-1.9.1.min.js"></script>
+    <script src="scripts/jquery-ui.js"></script>
+
+    <script>
+        $( document ).ready(function() {
+            /* setup datepicker */
+            $( ".datepicker" ).date({
+                firstDay: 1,
+                monthNames: [ "Jänner", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember" ],
+                dayNamesMin: [ "So", "Mo", "Di", "Mi", "Do", "Fr", "Sa" ],
+                dateFormat: "dd.mm.yy"
+            });
+
+            /* append all selectable countries to elements <select class="countries">*/
+            var allCountries = '<option value="Albania">Albania</option><option value="Andorra">Andorra</option><option value="Armenia">Armenia</option><option value="Austria" selected>Austria</option><option value="Azerbaijan">Azerbaijan</option><option value="Belarus">Belarus</option><option value="Belgium">Belgium</option><option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option><option value="Bulgaria">Bulgaria</option><option value="Croatia">Croatia</option><option value="Cyprus">Cyprus</option><option value="Czech Republic">Czech Republic</option><option value="Denmark">Denmark</option><option value="Estonia">Estonia</option><option value="Faroe Islands">Faroe Islands</option><option value="Finland">Finland</option><option value="France">France</option><option value="Georgia">Georgia</option><option value="Germany">Germany</option><option value="Gibraltar">Gibraltar</option><option value="Greece">Greece</option><option value="Greenland">Greenland</option><option value="Hungary">Hungary</option><option value="Iceland">Iceland</option><option value="Ireland">Ireland</option><option value="Italy">Italy</option><option value="Kazakhstan">Kazakhstan</option><option value="Kosovo">Kosovo</option><option value="Latvia">Latvia</option><option value="Liechtenstein">Liechtenstein</option><option value="Lithuania">Lithuania</option><option value="Luxembourg">Luxembourg</option><option value="Macedonia">Macedonia</option><option value="Malta">Malta</option><option value="Moldova, Republic of">Moldova, Republic of</option><option value="Monaco">Monaco</option><option value="Montenegro">Montenegro</option><option value="Netherlands">Netherlands</option><option value="Norway">Norway</option><option value="Poland">Poland</option><option value="Portugal">Portugal</option><option value="Romania">Romania</option><option value="Russia">Russia</option><option value="San Marino">San Marino</option><option value="Serbia and Montenegro">Serbia and Montenegro</option><option value="Slovakia">Slovakia</option><option value="Slovenia">Slovenia</option><option value="Spain">Spain</option><option value="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option><option value="Sweden">Sweden</option><option value="Switzerland">Switzerland</option><option value="Turkey">Turkey</option><option value="Ukraine">Ukraine</option><option value="United Kingdom">United Kingdom</option><option value="Vatican City">Vatican City</option>';
+            $('.countries').append(allCountries);
+
+            /* add logo to all headers */
+			
+            $("div[data-role='header']").append('<img src="img/logo_small.png" alt="Logo" class="ui-btn-right">');
+
+            /* add footer to all pages */
+            $("div[data-role='page']").append('<div data-role="footer"><h4>&copy; mto 2014</h4></div>');
+        });
+    </script>
+
+    <script>
+        $( document ).on( "mobileinit", function() {
+            $.mobile.defaultPageTransition = 'slide'; // override default transition
+        });
+    </script>
+
+    <!-- initialize jquery-mobile and datepicker -->
+    <script src="scripts/jquery.mobile-1.4.0.min.js"></script>
+    <script src="scripts/jquery.mobile.datepicker.js"></script>
+</head>
+<body ng-controller="InputDataCtrl">
+
+<!-- LANDING PAGE -->
+<div data-role="page" id="home">
+    <div data-role="header">
+        <h1>mto</h1>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+        <nav>
+            <ul data-role="listview" data-inset="true">
+                <li><a href="#anmelden">Anmelden</a></li>
+                <li><a href="#angebote">Angebote</a></li>
+            </ul>
+        </nav>
+    </div><!-- /content -->
+
+    <!-- footer added via jquery -->
+</div><!-- /page -->
+
+<!-- ANMELDEN -->
+<div data-role="page" id="anmelden">
+
+    <div data-role="header" data-add-back-btn="true" data-back-btn-text="Zurück">
+        <h1>Anmelden</h1>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+        <div data-role="collapsible-set">
+
+            <!-- Fracht anmelden -->
+            <div data-role="collapsible" data-inset="true">
+                <h4>Fracht</h4>
+                <form action="http://mtoserver.dyndns.org/mto/formToMail.php" method="post" id="cargo">
+                    <fieldset>
+                        <legend class="first">Ihre Ladung von ...</legend>
+
+                        <label for="cargo_country_from" class="select required">Land</label>
+                        <select name="country_from" id="cargo_country_from" class="countries" required="">
+                            <!-- options loaded via jquery -->
+                        </select>
+
+                        <label for="cargo_plz_from" class="required">PLZ</label>
+                        <input name="plz_from" id="cargo_plz_from" value="" type="number" placeholder="Postleitzahl" required="">
+                    </fieldset>
+                    
+                    <fieldset>
+                        <legend>nach...</legend>
+
+                        <label for="cargo_country_to" class="select required">Land</label>
+                        <select name="country_to" id="cargo_country_to" class="countries" required="">
+                            <!-- options loaded via jquery -->
+                        </select>
+
+                        <label for="cargo_plz_to" class="required">PLZ</label>
+                        <input name="plz_to" id="cargo_plz_to" value="" type="number" placeholder="Postleitzahl" required="">
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>am ...</legend>
+
+                        <label for="cargo_date" class="required">Datum</label>
+                        <input name="date" id="cargo_date" class="datepicker" data-role="date" data-inline="true" type="text" required="">
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Transportdaten</legend>
+
+                        <label for="cargo_what" >Ware</label>
+                        <input name="what" id="cargo_ware" type="text" placeholder="Ware">
+
+                        <label for="cargo_length" >Lademeter</label>
+                        <input name="length" id="cargo_length" type="text" placeholder="10m">
+
+                        <label for="cargo_weight" >Gewicht</label>
+                        <input name="weight" id="cargo_weight" type="text" placeholder="15t">
+
+						<label for="cargo_price" >Frachtrate</label>
+                        <input name="price" id="cargo_price" type="text" placeholder="€ 1000,00">
+
+
+                        
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Benötigter LKW</legend>
+
+                        <label for="cargo_lkw_art">LKW-Art</label>
+                        <input name="lkw_art" id="cargo_lkw_art" type="text" placeholder="LKW-Art">
+
+                        <label for="cargo_lkw_aufbau">LKW-Aufbau</label>
+                        <input name="lkw_aufbau" id="cargo_lkw_aufbau" type="text" placeholder="LKW-Aufbau">
+
+                        <label for="cargo_lkw_ausstattung">Ausstattung</label>
+                        <input name="lkw_ausstattung" id="cargo_lkw_ausstattung" type="text" placeholder="Ausstattung">
+
+                        <label for="lkw_ggvs">GGVS</label>
+                        <select name="lkw_ggvs" id="lkw_ggvs" data-role="slider">
+                            <option value="Nein" selected>Nein</option>
+                            <option value="Ja">Ja</option>
+                        </select>
+
+                        <label for="cargo_notes">Bemerkungen</label>
+                        <textarea name="notes" id="cargo_notes" placeholder="Eventuelle Anmerkungen ..."></textarea>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Kundendaten</legend>
+
+                        <label for="cargo_name">Name</label>
+                        <input name="name" id="cargo_name" type="text" placeholder="Name">
+
+                     
+                        <label for="cargo_telephone" class="required">Telefon</label>
+                        <input name="telephone" id="cargo_telephone" type="text" placeholder="Telefon" required="">
+
+                    </fieldset>
+
+                    <fieldset>
+                        <button class="ui-shadow ui-btn ui-corner-all" type="submit" id="submit_cargo">Absenden</button>
+                    </fieldset>
+					 <input type="hidden" name="Type" value="Fracht">
+                </form>
+            </div><!-- /fracht -->
+
+            <!-- LKW anmelden -->
+            <div data-role="collapsible" data-inset="true" data-theme="b" data-content-theme="b">
+                <h4>LKW</h4>
+                <form action="http://mtoserver.dyndns.org/mto/formToMail.php" method="post" id="lkw">
+                    <fieldset>
+                        <legend class="first">Ihr freier LKW von...</legend>
+
+                        <label for="lkw_country_from" class="select required">Land</label>
+                        <select name="country_from" id="lkw_country_from" class="countries" required="">
+                            <!-- options loaded via jquery -->
+                        </select>
+
+                        <label for="lkw_plz_from" class="required">PLZ</label>
+                        <input name="plz_from" id="lkw_plz_from" value="" type="number" placeholder="Postleitzahl" required="">
+</fieldset>
+
+					<fieldset>
+                        <legend>nach...</legend>
+
+                        <label for="lkw_country_to" class="select required">Land</label>
+                        <select name="country_to" id="lkw_country_to" class="countries" required="">
+                            <!-- options loaded via jquery -->
+                        </select>
+
+                        <label for="lkw_plz_to" class="required">PLZ</label>
+                        <input name="plz_to" id="lkw_plz_to" value="" type="number" placeholder="Postleitzahl" required="">
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>am ...</legend>
+
+                        <label for="lkw_date" class="required">Date</label>
+                        <input name="date" id="lkw_date" class="datepicker" data-role="date" data-inline="true" type="text" required="">
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>LKW-Daten</legend>
+
+                        <label for="lkw_art" class="required">LKW-Art</label>
+                        <input name="lkw_art" id="lkw_art" type="text" placeholder="LKW-Art" required="">
+
+                        <label for="lkw_aufbau" class="required">LKW-Aufbau</label>
+                        <input name="lkw_aufbau" id="lkw_aufbau" type="text" placeholder="LKW-Aufbau" required="">
+
+                        <label for="lkw_ausstattung">Ausstattung</label>
+                        <input name="lkw_ausstattung" id="lkw_ausstattung" type="text" placeholder="Ausstattung">
+
+                        <label for="lkw_ggvs">GGVS</label>
+                        <select name="lkw_ggvs" id="lkw_ggvs" data-role="slider">
+                            <option value="Nein" selected>Nein</option>
+                            <option value="Ja">Ja</option>
+                        </select>
+
+                        <label for="lkw_notes">Bemerkungen</label>
+                        <textarea name="notes" id="lkw_notes" placeholder="Eventuelle Anmerkungen ..."></textarea>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Kundendaten</legend>
+
+                        <label for="lkw_name">Name</label>
+                        <input name="name" id="lkw_name" type="text" placeholder="Name" >
+
+                        <label for="lkw_telephone" class="required">Telefon</label>
+                        <input name="telephone" id="lkw_telephone" type="text" placeholder="Telefon" required="">
+
+                    </fieldset>
+
+                    <fieldset>
+                        <button class="ui-shadow ui-btn ui-corner-all" type="submit" id="submit_lkw">Absenden</button>
+                    </fieldset>
+					 <input type="hidden" name="Type" value="LKW">
+                </form>
+            </div><!-- /lkw -->
+        </div>
+    </div><!-- /content -->
+
+    <!-- footer added via jquery -->
+</div><!-- /page -->
+
+<!-- ANGEBOTE -->
+<div data-role="page" id="angebote">
+
+    <div data-role="header" data-add-back-btn="true" data-back-btn-text="Zurück">
+        <h1>Angebote</h1>
+		<button ng-click="reloadData()">Refresh</button>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+        <div data-role="collapsible-set">
+            <div data-role="collapsible">
+                <h4>Fracht</h4>
+                <ul data-role="listview" data-inset="false">
+                    <!-- links # + id -->
+                    <li ng-repeat="inputData in inputDatas | filter:{Type:'0'}"><a href="#{{inputData.ID}}">{{inputData.From}} - {{inputData.To}}</a>
+					</li>
+                </ul>
+            </div>
+            <div data-role="collapsible" data-theme="b" data-content-theme="b">
+                <h4>LKW</h4>
+                <ul data-role="listview" data-inset="false">
+                    <!-- links # + id -->
+                    <li ng-repeat="inputData in inputDatas | filter:{Type:'1'}"><a href="#{{inputData.ID}}">{{inputData.From}} - {{inputData.To}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div><!-- /content -->
+
+    <!-- footer added via jquery -->
+</div><!-- /page -->
+
+<!-- ########################
+dynamically add divs below here
+(markup as shown in examples; attributes for lkw: data-theme="b" data-content-theme="b")
+################## -->
+
+<!-- fracht example -->
+<div ng-repeat="inputData in inputDatas | filter:{Type:'0'}" data-role="page" id="{{inputData.ID}}">
+
+    <div data-role="header" data-add-back-btn="true" data-back-btn-text="Zurück">
+        <h1>Details</h1>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+        <ul data-role="listview" data-inset="true">
+            <li data-role="list-divider">{{inputData.From}} - {{inputData.To}}</li>
+            <li>Datum: {{inputData.Date}}</li>
+            <li ng-show="inputData.What != ''">Was: {{inputData.What}}</li>
+            <li ng-show="inputData.LoadingLength != ''">Länge: {{inputData.LoadingLength}}</li>
+            <li ng-show="inputData.Weight != ''">Gewicht: {{inputData.Weight}}</li>
+            <li ng-show="inputData.Truck != ''">gesuchter LKW: {{inputData.Truck}}</li>
+        </ul>
+    </div><!-- /content -->
+
+    <!-- footer added via jquery -->
+</div><!-- /page -->
+
+
+<!-- lkw example -->
+<div ng-repeat="inputData in inputDatas | filter:{Type:'1'}" data-role="page" id="{{inputData.ID}}" data-theme="b" data-content-theme="b">
+
+    <div data-role="header" data-add-back-btn="true" data-back-btn-text="Zurück">
+        <h1>Details</h1>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+        <ul data-role="listview" data-inset="true">
+              <li data-role="list-divider">{{inputData.From}} - {{inputData.To}}</li>
+            <li>Datum: {{inputData.Date}}</li>
+            <li>LKW: {{inputData.Truck}}</li>
+        </ul>
+    </div><!-- /content -->
+
+    <!-- footer added via jquery -->
+</div><!-- /page -->
+
+</body>
+</html>

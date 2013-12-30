@@ -1,0 +1,43 @@
+new Ajax.Request( 'http://mtoserver.dyndns.org/mto/sql.php', {
+  method:  'get',
+  onSuccess:  function(response){
+    alert(response.responseText);
+  },
+  onFailure:  function(){
+    alert('ERROR');
+  }
+});
+
+/*function httpGet(theUrl)
+{
+    var xmlHttp = null;
+
+    xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false );
+
+    return JSON.parse(xmlHttp.responseText);
+}
+
+document.write (JSON.stringify(httpGet("http://mtoserver.dyndns.org/mto/sql.php")));
+
+/*document.write("test");
+
+/* $.getJSON("http://mtoserver.dyndns.org/mto/sql.php? jsoncallback=?");
+function jsoncallback (data){
+	document.write("test");
+	document.write(JSON.stringify(data));
+}
+
+
+
+$http({ method: 'GET', url: 'http://mtoserver.dyndns.org/mto/sql.php' })
+        .success(function (data,status) {
+          document.write (JSON.stringify(data));
+        });
+
+<script> $http.get('http://mtoserver.dyndns.org/mto/sql.php').success(
+    function(data, status) {
+       document.write (JSON.stringify(obj));
+    }
+); </script>
+*/
