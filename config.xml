@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns     = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "at.mto.TruckApp"
+        versionCode="10"
+        version   = "1">
+
+	<icon src="icon.png" />
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>MTO</name>
+
+    <description>
+        Mit diesem App können Sie die aktuellen Ladungen und LKW von MTO jederzeit mitverfolgen
+    </description>
+
+    <author href="http://www.mto.at" email="clemens@mto.at">
+		Clemens Brunner
+    </author>
+
+</widget>
