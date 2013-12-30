@@ -12,19 +12,33 @@ var app = angular.module('truckApp', []);
 
 
 function InputDataCtrl($scope, $http) {
+     $scope.loadData = function() {
+     $http.jsonp('http://localhost/mto/sql.php?callback=JSON_CALLBACK'
+     ).then(function(response) {
+     $scope.inputDatas = response.data;
+     getData();
+     });
+     };
+/*
     $scope.loadData = function() {
-        $http.jsonp('http://localhost/mto/sql.php?callback=JSON_CALLBACK'
-                ).then(function(response) {
-            $scope.inputDatas = response.data;
-
+         $.jsonp({
+            url: 'http://mtoserver.dyndns.org/mto/sql.php',
+            callbackParameter: 'callback',
+            success: function(data, status) {
+                alert(JSON.stringify(data));
+            },
+            error: function() {
+                alert("error");
+            }
         });
     };
+*/
 
     $scope.reloadData = function() {
         for (i = 0; i < $scope.inputDatas.length; i++) {
             $scope.inputDatas.splice(i);
         }
-        $http.jsonp('http://localhost/mto/sql.php?callback=JSON_CALLBACK'
+        $http.jsonp('http://mtoserver.dyndns.org/mto/sql.php?callback=JSON_CALLBACK'
                 ).then(function(response) {
 
             for (i = 0; i < response.data.length; i++) {
@@ -35,5 +49,4 @@ function InputDataCtrl($scope, $http) {
     };
     $scope.loadData();
 }
-
 
