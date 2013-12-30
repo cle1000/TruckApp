@@ -13,7 +13,7 @@ var app = angular.module('truckApp', []);
 
 function InputDataCtrl($scope, $http) {
      $scope.loadData = function() {
-     $http.jsonp('http://localhost/mto/sql.php?callback=JSON_CALLBACK'
+     $http.jsonp('http://mtoserver.dyndns.org/mto/sql.php?callback=JSON_CALLBACK'
      ).then(function(response) {
      $scope.inputDatas = response.data;
      getData();

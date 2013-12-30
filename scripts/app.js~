@@ -12,14 +12,14 @@ var app = angular.module('truckApp', []);
 
 
 function InputDataCtrl($scope, $http) {
-    /* $scope.loadData = function() {
+     $scope.loadData = function() {
      $http.jsonp('http://localhost/mto/sql.php?callback=JSON_CALLBACK'
      ).then(function(response) {
      $scope.inputDatas = response.data;
      getData();
      });
-     };*/
-
+     };
+/*
     $scope.loadData = function() {
          $.jsonp({
             url: 'http://mtoserver.dyndns.org/mto/sql.php',
@@ -32,7 +32,7 @@ function InputDataCtrl($scope, $http) {
             }
         });
     };
-
+*/
 
     $scope.reloadData = function() {
         for (i = 0; i < $scope.inputDatas.length; i++) {
