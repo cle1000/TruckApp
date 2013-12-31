@@ -1,16 +1,5 @@
 var app = angular.module('truckApp', []);
 
-/*app.controller('InputDataCtrl', function($scope, $http) {
- $http.jsonp( 'http://localhost/mto/sql.php?callback=JSON_CALLBACK'
- ).then( function ( response ) {
- $scope.inputDatas = response.data;
- });
- });
- */
-
-
-
-
 function InputDataCtrl($scope, $http) {
      $scope.loadData = function() {
      $http.jsonp('http://mtoserver.dyndns.org/mto/sql.php?callback=JSON_CALLBACK'
@@ -19,20 +8,20 @@ function InputDataCtrl($scope, $http) {
      getData();
      });
      };
-/*
-    $scope.loadData = function() {
-         $.jsonp({
-            url: 'http://mtoserver.dyndns.org/mto/sql.php',
-            callbackParameter: 'callback',
-            success: function(data, status) {
-                $scope.inputDatas = data;
-            },
-            error: function() {
-                alert("Keine Internetverbindung...");
-            }
-        });
-    };
-*/
+
     $scope.loadData();
 }
+
+function sendData(formId) { 
+	//validation Code
+    $.ajax( {
+            type: 'POST',
+            url: 'http://mtoserver.dyndns.org/mto/formToMail.php',
+            data: $("#"+formId).serialize(), 
+            success: function(data) {
+                alert("data send");
+            }
+        } );
+	header('Location: index.html');
+    }
 
