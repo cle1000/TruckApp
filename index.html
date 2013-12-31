@@ -12,17 +12,16 @@
    <link rel="stylesheet" href="css/jquery.mobile.datepicker.css" />
 
     <!-- mto custom styles -->
-     <link href="css/style.css" rel="stylesheet" type="text/css" /> 
+     <link href="css/style.css" rel="stylesheet" type="text/css" />
 
-	
 	<script src="scripts/jquery.jsonp-2.1.4.min.js"></script>
 
-    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script-->
-	<script src="scripts/angular.js"></script>
+
+	<script src="scripts/angular.min.js"></script>
 	<script src="scripts/app.js"></script>
     <!-- include jquery and jquery-ui -->
     <script src="scripts/jquery-1.9.1.min.js"></script>
-    <script src="scripts/jquery-ui.js"></script>
+    <script src="scripts/jquery-ui-1.10.3.custom.min.js"></script>
 
     <script src="scripts/setup.js"></script>
 
@@ -63,22 +62,22 @@
             <!-- Fracht anmelden -->
             <div data-role="collapsible" data-inset="true">
                 <h4>Fracht</h4>
-                <form action="#" method="post" onsubmit="sendData('cargo')" id="cargo">
+                <form action="" method="post" onsubmit="sendData('cargo')" id="cargo">
 
 					<fieldset>
-                        <legend>Kundendaten</legend>
+                        <legend class="first" >Kundendaten</legend>
 
                         <label for="cargo_name">Name</label>
                         <input name="name" id="cargo_name" type="text" placeholder="Name"/>
 
                      
                         <label for="cargo_telephone" class="required">Telefon</label>
-                        <input name="telephone" id="cargo_telephone" type="text" placeholder="Telefon" required=""/>
+                        <input name="telephone" id="cargo_telephone" type="text" placeholder="Telefon" required="">
 
                     </fieldset>
 
                     <fieldset>
-                        <legend class="first">Ihre Ladung von ...</legend>
+                        <legend >Ihre Ladung von ...</legend>
 
                         <label for="cargo_country_from" class="select required">Land</label>
                         <select name="country_from" id="cargo_country_from" class="countries" required="">
@@ -130,7 +129,7 @@
                         <select name="lkw_art" id="cargo_lkw_art" type="text" class="vehicleTyp" placeholder="LKW-Art">
 </select>
                         <label for="cargo_lkw_aufbau" class="select">LKW-Aufbau</label>
-                        <select name="lkw_aufbau" id="cargo_lkw_aufbau" type="text" class="superstructure" splaceholder="LKW-Aufbau">
+                        <select name="lkw_aufbau" id="cargo_lkw_aufbau" type="text" class="superstructure" >
 </select>
                         <label for="cargo_lkw_ausstattung">Ausstattung</label>
                         <input name="lkw_ausstattung" id="cargo_lkw_ausstattung" type="text" placeholder="Ausstattung">
@@ -151,7 +150,7 @@
                     <fieldset>
                         <button class="ui-shadow ui-btn ui-corner-all" type="submit" id="submit_cargo">Absenden</button>
                     </fieldset>
-					 <input type="hidden" name="Type" value="Fracht">
+					 <input type="hidden" name="Type" value="App_Fracht">
                 </form>
             </div><!-- /fracht -->
 
@@ -161,7 +160,7 @@
                 <form action="#" onSubmit="sendData('lkw')" method="post" id="lkw">
 
 			 <fieldset>
-                        <legend>Kundendaten</legend>
+                        <legend  class="first">Kundendaten</legend>
 
                         <label for="lkw_name">Name</label>
                         <input name="name" id="lkw_name" type="text" placeholder="Name" >
@@ -171,7 +170,7 @@
 
                     </fieldset>
                     <fieldset>
-                        <legend class="first">Ihr freier LKW von...</legend>
+                        <legend>Ihr freier LKW von...</legend>
 
                         <label for="lkw_country_from" class="select">Land</label>
                         <select name="country_from" id="lkw_country_from" class="countries" >
@@ -232,7 +231,7 @@
                     <fieldset>
                         <button class="ui-shadow ui-btn ui-corner-all" type="submit" onclick="sendFid="submit_lkw">Absenden</button>
                     </fieldset>
-					 <input type="hidden" name="Type" value="LKW">
+					 <input type="hidden" name="Type" value="App_LKW">
                 </form>
             </div><!-- /lkw -->
         </div>
@@ -246,10 +245,11 @@
 
     <div data-role="header" data-add-back-btn="true" data-back-btn-text="Zurück">
         <h1>Angebote</h1>
-		<button ng-click="loadData()" class="ui-btn-right" data-inline="true" data-icon="refresh">Refresh</button>
+		
     </div><!-- /header -->
 
     <div role="main" class="ui-content">
+		<button ng-click="loadData()" data-inline="true" data-icon="refresh">Refresh</button>
         <div data-role="collapsible-set">
             <div data-role="collapsible">
                 <h4>Fracht</h4>
