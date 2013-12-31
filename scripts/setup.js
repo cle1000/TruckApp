@@ -7,11 +7,12 @@
                 dateFormat: "dd.mm.yy"
             });
 
-			  $( "#cargo" ).submit(function( event ) {
-                    header('Location: index.html');
-                    alert( "Handler for .submit() called." );
-//                    initHeaderFooter();
-                });
+$( ".ui-datepicker" ).hide();
+$(".datepicker").focus(function() { 
+    $( ".ui-datepicker" ).slideDown();
+}).blur(function() { 
+    $( ".ui-datepicker" ).slideUp();
+});
 
             /* append all selectable countries to elements <select class="countries">*/
             var allCountries = '<option value="Albania">Albania</option><option value="Andorra">Andorra</option><option value="Armenia">Armenia</option><option value="Austria" selected>Austria</option><option value="Azerbaijan">Azerbaijan</option><option value="Belarus">Belarus</option><option value="Belgium">Belgium</option><option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option><option value="Bulgaria">Bulgaria</option><option value="Croatia">Croatia</option><option value="Cyprus">Cyprus</option><option value="Czech Republic">Czech Republic</option><option value="Denmark">Denmark</option><option value="Estonia">Estonia</option><option value="Faroe Islands">Faroe Islands</option><option value="Finland">Finland</option><option value="France">France</option><option value="Georgia">Georgia</option><option value="Germany">Germany</option><option value="Gibraltar">Gibraltar</option><option value="Greece">Greece</option><option value="Greenland">Greenland</option><option value="Hungary">Hungary</option><option value="Iceland">Iceland</option><option value="Ireland">Ireland</option><option value="Italy">Italy</option><option value="Kazakhstan">Kazakhstan</option><option value="Kosovo">Kosovo</option><option value="Latvia">Latvia</option><option value="Liechtenstein">Liechtenstein</option><option value="Lithuania">Lithuania</option><option value="Luxembourg">Luxembourg</option><option value="Macedonia">Macedonia</option><option value="Malta">Malta</option><option value="Moldova, Republic of">Moldova, Republic of</option><option value="Monaco">Monaco</option><option value="Montenegro">Montenegro</option><option value="Netherlands">Netherlands</option><option value="Norway">Norway</option><option value="Poland">Poland</option><option value="Portugal">Portugal</option><option value="Romania">Romania</option><option value="Russia">Russia</option><option value="San Marino">San Marino</option><option value="Serbia and Montenegro">Serbia and Montenegro</option><option value="Slovakia">Slovakia</option><option value="Slovenia">Slovenia</option><option value="Spain">Spain</option><option value="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option><option value="Sweden">Sweden</option><option value="Switzerland">Switzerland</option><option value="Turkey">Turkey</option><option value="Ukraine">Ukraine</option><option value="United Kingdom">United Kingdom</option><option value="Vatican City">Vatican City</option>';
