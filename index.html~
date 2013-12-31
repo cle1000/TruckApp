@@ -15,13 +15,13 @@
      <link href="css/style.css" rel="stylesheet" type="text/css" />
 
 	<script src="scripts/jquery.jsonp-2.1.4.min.js"></script>
-
+<script src="phonegap.js"></script>
 
 	<script src="scripts/angular.min.js"></script>
 	<script src="scripts/app.js"></script>
     <!-- include jquery and jquery-ui -->
     <script src="scripts/jquery-1.9.1.min.js"></script>
-    <script src="scripts/jquery-ui.js"></script>
+    <script src="scripts/jquery-ui-1.10.3.custom.min.js"></script>
 
     <script src="scripts/setup.js"></script>
 

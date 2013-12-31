@@ -14,6 +14,14 @@ function InputDataCtrl($scope, $http) {
 	$scope.loadData();
 }
 
+function showAlert (message, title){
+	if (navigator.notification) {
+		navigator.notification.alert(message, null, title, 'OK');
+	} else {
+		alert(title ? (title + ": " + message) : message);
+	}
+}
+
 function sendData(formId) {
 	// validation Code
 	$.ajax({
@@ -28,5 +36,5 @@ function sendData(formId) {
 		}
 	});
 	window.history.go(-1);
-		alert("Die Mitarbeiter von MTO melden sich in Kürze");
+	showAlert("Die Mitarbeiter von MTO melden sich in Kürze", "Info");
 }
