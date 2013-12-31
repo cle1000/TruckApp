@@ -255,7 +255,7 @@
                 <h4>Fracht</h4>
                 <ul data-role="listview" data-inset="false">
                     <!-- links # + id -->
-                    <li ng-repeat="inputData in inputDatas | filter:{Type:'0'}"><a class="ng-binding ui-btn ui-btn-icon-right ui-icon-carat-r" href="#{{inputData.ID}}">{{inputData.From}} - {{inputData.To}}</a>
+                    <li ng-repeat="inputData in inputDatas | filter:{Type:'0'}"><a class="ng-binding ui-btn ui-btn-icon-right ui-icon-carat-r" href="#{{inputData.ID}}">{{inputData.From}} - {{inputData.To}} <br> {{inputData.Date}}</a>
 					</li>
                 </ul>
             </div>
@@ -263,7 +263,7 @@
                 <h4>LKW</h4>
                 <ul data-role="listview" data-inset="false">
                     <!-- links # + id -->
-                    <li ng-repeat="inputData in inputDatas | filter:{Type:'1'}"><a class="ng-binding ui-btn ui-btn-icon-right ui-icon-carat-r" href="#{{inputData.ID}}">{{inputData.From}} - {{inputData.To}}</a></li>
+                    <li ng-repeat="inputData in inputDatas | filter:{Type:'1'}"><a class="ng-binding ui-btn ui-btn-icon-right ui-icon-carat-r" href="#{{inputData.ID}}">{{inputData.From}} - {{inputData.To}} <br> {{inputData.Date}}</a></li>
                 </ul>
             </div>
         </div>
