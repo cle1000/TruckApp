@@ -15,11 +15,11 @@ function InputDataCtrl($scope, $http) {
 }
 
 function showAlert (message, title){
-	if (navigator.notification) {
+	//if (navigator.notification) {
 		navigator.notification.alert(message, null, title, 'OK');
-	} else {
-		alert(title ? (title + ": " + message) : message);
-	}
+	//} else {
+	//	alert(title ? (title + ": " + message) : message);
+	//}
 }
 
 function sendData(formId) {
@@ -28,12 +28,7 @@ function sendData(formId) {
 		type : 'POST',
 		url : 'http://mtoserver.dyndns.org/mto/formToMail.php',
 		data : $("#" + formId).serialize(),
-		success : function(data) {
-			work = 1;
-		},
-		error : function(responseData, textStatus, errorThrown) {
-			work = 0;
-		}
+		success : function(data) {}
 	});
 	window.history.go(-1);
 	showAlert("Die Mitarbeiter von MTO melden sich in Kürze", "Info");
