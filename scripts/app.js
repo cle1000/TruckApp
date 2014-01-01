@@ -15,11 +15,11 @@ function InputDataCtrl($scope, $http) {
 }
 
 function showAlert (message, title){
-	//if (navigator.notification) {
+	if (navigator.notification) {
 		navigator.notification.alert(message, null, title, 'OK');
-	//} else {
-	//	alert(title ? (title + ": " + message) : message);
-	//}
+	} else {
+		alert(title ? (title + ": " + message) : message);
+	}
 }
 
 function sendData(formId) {
