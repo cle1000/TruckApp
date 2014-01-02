@@ -13,16 +13,19 @@
 
     <!-- mto custom styles -->
      <link href="css/style.css" rel="stylesheet" type="text/css" />
-<script src="scripts/jquery.jsonp-2.1.4.min.js"></script>
-	<script src="phonegap.js"></script>
 
-	<script src="scripts/angular.min.js"></script>
-	<script src="scripts/app.js"></script>
+	
+
+
     <!-- include jquery and jquery-ui -->
     <script src="scripts/jquery-1.9.1.min.js"></script>
     <script src="scripts/jquery-ui-1.10.3.custom.min.js"></script>
 
-    <script src="scripts/setup.js"></script>
+    		<script src="scripts/angular.min.js"></script>
+	<script src="phonegap.js"></script>
+	<script src="scripts/jquery.jsonp-2.1.4.min.js"></script>
+	<script src="scripts/app.js"></script>
+<script src="scripts/setup.js"></script>
 
     <!-- initialize jquery-mobile and datepicker -->
     <script src="scripts/jquery.mobile-1.4.0.min.js"></script>
@@ -282,6 +285,7 @@ dynamically add divs below here
 
     <div data-role="header" data-position="fixed" data-add-back-btn="true" data-back-btn-text="Zurück">
         <h1>Details</h1>
+		<img src="img/logo_small.png" alt="Logo" class="ui-btn-right">
     </div><!-- /header -->
 
     <div role="main" class="ui-content">
@@ -304,6 +308,7 @@ dynamically add divs below here
 
     <div data-role="header" data-position="fixed" data-add-back-btn="true" data-back-btn-text="Zurück">
         <h1>Details</h1>
+		<img src="img/logo_small.png" alt="Logo" class="ui-btn-right">
     </div><!-- /header -->
 
     <div role="main" class="ui-content">
@@ -316,6 +321,6 @@ dynamically add divs below here
 
     <!-- footer added via jquery -->
 </div><!-- /page -->
-	
+
 </body>
 </html>
