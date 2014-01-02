@@ -32,8 +32,8 @@ $('.superstructure').append(superstructures);
             /* add footer to all pages */
             $("div[data-role='page']").append('<div data-role="footer" data-position="fixed"><h4>&copy; mto 2014</h4></div>');
         });
-    /*
+    
         $( document ).on( "mobileinit", function() {
             $.mobile.defaultPageTransition = 'slide'; // override default transition
-        });*/
+        });
 
