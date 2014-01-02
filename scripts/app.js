@@ -33,3 +33,4 @@ function sendData(formId) {
 	window.history.go(-1);
 	showAlert("Die Mitarbeiter von MTO melden sich in Kürze", "Info");
 }
+

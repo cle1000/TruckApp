@@ -15,11 +15,11 @@ function InputDataCtrl($scope, $http) {
 }
 
 function showAlert (message, title){
-	//if (navigator.notification) {
+	if (navigator.notification) {
 		navigator.notification.alert(message, null, title, 'OK');
-	//} else {
-	//	alert(title ? (title + ": " + message) : message);
-	//}
+	} else {
+		alert(title ? (title + ": " + message) : message);
+	}
 }
 
 function sendData(formId) {
@@ -32,4 +32,9 @@ function sendData(formId) {
 	});
 	window.history.go(-1);
 	showAlert("Die Mitarbeiter von MTO melden sich in Kürze", "Info");
+}
+
+in, .out {
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-duration: 350ms !important;
 }

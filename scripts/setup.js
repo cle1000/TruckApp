@@ -36,3 +36,10 @@ $('.superstructure').append(superstructures);
         $( document ).on( "mobileinit", function() {
             $.mobile.defaultPageTransition = 'slide'; // override default transition
         });
+
+
+in, .out {
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-duration: 350ms !important;
+}
+

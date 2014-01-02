@@ -13,7 +13,6 @@
 
     <!-- mto custom styles -->
      <link href="css/style.css" rel="stylesheet" type="text/css" />
-
 	<script src="scripts/jquery.jsonp-2.1.4.min.js"></script>
 	<script src="phonegap.js"></script>
 
@@ -28,12 +27,13 @@
     <!-- initialize jquery-mobile and datepicker -->
     <script src="scripts/jquery.mobile-1.4.0.min.js"></script>
     <script src="scripts/jquery.mobile.datepicker.js"></script>
+	<script src="scripts/fastclick.js"></script>
 </head>
-<body ng-controller="InputDataCtrl">
-
+<body ng-controller="InputDataCtrl" onload="initFastButtons();">
+<span id="fastclick">
 <!-- LANDING PAGE -->
 <div data-role="page" id="home">
-    <div data-role="header">
+    <div data-role="header" data-position="fixed">
         <h1>mto</h1>
     </div><!-- /header -->
 
@@ -52,7 +52,7 @@
 <!-- ANMELDEN -->
 <div data-role="page" id="anmelden">
 
-    <div data-role="header" data-add-back-btn="true" data-back-btn-text="Zurück">
+    <div data-role="header"  data-position="fixed" data-add-back-btn="true" data-back-btn-text="Zurück">
         <h1>Anmelden</h1>
     </div><!-- /header -->
 
@@ -157,7 +157,7 @@
             <!-- LKW anmelden -->
             <div data-role="collapsible" data-inset="true" data-theme="b" data-content-theme="b">
                 <h4>LKW</h4>
-                <form action="#" onSubmit="sendData('lkw')" method="post" id="lkw">
+                <form action="" onSubmit="sendData('lkw')" method="post" id="lkw">
 
 			 <fieldset>
                         <legend  class="first">Kundendaten</legend>
@@ -197,7 +197,7 @@
                         <legend>am ...</legend>
 
                         <label for="lkw_date" class="required">Date</label>
-                        <input name="date" id="lkw_date" class="datepicker" data-role="date" data-inline="true" type="text" required="">
+                        <input name="date" readonly="true" id="lkw_date" class="datepicker" data-role="date" data-inline="true" type="text" required="">
                     </fieldset>
 
                     <fieldset>
@@ -243,7 +243,7 @@
 <!-- ANGEBOTE -->
 <div data-role="page" id="angebote">
 
-    <div data-role="header" data-add-back-btn="true" data-back-btn-text="Zurück">
+    <div data-role="header" data-position="fixed" data-add-back-btn="true" data-back-btn-text="Zurück">
         <h1>Angebote</h1>
 		
     </div><!-- /header -->
@@ -280,7 +280,7 @@ dynamically add divs below here
 <!-- fracht example -->
 <div ng-repeat="inputData in inputDatas | filter:{Type:'0'}" data-role="page" id="{{inputData.ID}}">
 
-    <div data-role="header" data-add-back-btn="true" data-back-btn-text="Zurück">
+    <div data-role="header" data-position="fixed" data-add-back-btn="true" data-back-btn-text="Zurück">
         <h1>Details</h1>
     </div><!-- /header -->
 
@@ -317,5 +317,7 @@ dynamically add divs below here
     <!-- footer added via jquery -->
 </div><!-- /page -->
 
+
+	</span>
 </body>
 </html>
