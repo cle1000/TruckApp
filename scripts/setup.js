@@ -30,16 +30,10 @@ $('.superstructure').append(superstructures);
             $("div[data-role='header']").append('<img src="img/logo_small.png" alt="Logo" class="ui-btn-right">');
 
             /* add footer to all pages */
-            $("div[data-role='page']").append('<div data-role="footer"><h4>&copy; mto 2014</h4></div>');
+            $("div[data-role='page']").append('<div data-role="footer" data-position="fixed"><h4>&copy; mto 2014</h4></div>');
         });
     
         $( document ).on( "mobileinit", function() {
             $.mobile.defaultPageTransition = 'slide'; // override default transition
         });
-
-
-.in, .out {
-    -webkit-animation-timing-function: ease-in-out;
-    -webkit-animation-duration: 350ms !important;
-}
 
