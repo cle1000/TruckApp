@@ -38,7 +38,7 @@ $('.superstructure').append(superstructures);
         });
 
 
-in, .out {
+.in, .out {
     -webkit-animation-timing-function: ease-in-out;
     -webkit-animation-duration: 350ms !important;
 }

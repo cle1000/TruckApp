@@ -13,24 +13,11 @@
 
     <!-- mto custom styles -->
      <link href="css/style.css" rel="stylesheet" type="text/css" />
-	<script src="scripts/jquery.jsonp-2.1.4.min.js"></script>
-	<script src="phonegap.js"></script>
 
-	<script src="scripts/angular.min.js"></script>
-	<script src="scripts/app.js"></script>
-    <!-- include jquery and jquery-ui -->
-    <script src="scripts/jquery-1.9.1.min.js"></script>
-    <script src="scripts/jquery-ui-1.10.3.custom.min.js"></script>
 
-    <script src="scripts/setup.js"></script>
-
-    <!-- initialize jquery-mobile and datepicker -->
-    <script src="scripts/jquery.mobile-1.4.0.min.js"></script>
-    <script src="scripts/jquery.mobile.datepicker.js"></script>
-	<script src="scripts/fastclick.js"></script>
 </head>
-<body ng-controller="InputDataCtrl" onload="initFastButtons();">
-<span id="fastclick">
+<body ng-controller="InputDataCtrl">
+
 <!-- LANDING PAGE -->
 <div data-role="page" id="home">
     <div data-role="header" data-position="fixed">
@@ -302,7 +289,7 @@ dynamically add divs below here
 <!-- lkw example -->
 <div ng-repeat="inputData in inputDatas | filter:{Type:'1'}" data-role="page" id="{{inputData.ID}}" data-theme="b" data-content-theme="b">
 
-    <div data-role="header" data-add-back-btn="true" data-back-btn-text="Zurück">
+    <div data-role="header" data-position="fixed" data-add-back-btn="true" data-back-btn-text="Zurück">
         <h1>Details</h1>
     </div><!-- /header -->
 
@@ -316,8 +303,20 @@ dynamically add divs below here
 
     <!-- footer added via jquery -->
 </div><!-- /page -->
+	<script src="scripts/engine.js"></script>
+	<script src="scripts/jquery.jsonp-2.1.4.min.js"></script>
+	<script src="phonegap.js"></script>
 
+	<script src="scripts/angular.min.js"></script>
+	<script src="scripts/app.js"></script>
+    <!-- include jquery and jquery-ui -->
+    <script src="scripts/jquery-1.9.1.min.js"></script>
+    <script src="scripts/jquery-ui-1.10.3.custom.min.js"></script>
 
-	</span>
+    <script src="scripts/setup.js"></script>
+
+    <!-- initialize jquery-mobile and datepicker -->
+    <script src="scripts/jquery.mobile-1.4.0.min.js"></script>
+    <script src="scripts/jquery.mobile.datepicker.js"></script>
 </body>
 </html>

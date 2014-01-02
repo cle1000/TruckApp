@@ -30,7 +30,7 @@ $('.superstructure').append(superstructures);
             $("div[data-role='header']").append('<img src="img/logo_small.png" alt="Logo" class="ui-btn-right">');
 
             /* add footer to all pages */
-            $("div[data-role='page']").append('<div data-position="fixed" data-role="footer"><h4>&copy; mto 2014</h4></div>');
+            $("div[data-role='page']").append('<div data-role="footer"><h4>&copy; mto 2014</h4></div>');
         });
     
         $( document ).on( "mobileinit", function() {
