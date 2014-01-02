@@ -1,7 +1,0 @@
-    var truckApp = angular.module('truckApp', []);
-     
-    truckApp.controller('LoadingCrtl', function ($scope, $http) {
- 		$http.get('json/data.json').success(function(data) {
-			$scope.loadings = data;
-		});
-	});
