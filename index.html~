@@ -22,7 +22,7 @@
 <div data-role="page" id="home">
     <div data-role="header" data-position="fixed">
         <h1>mto</h1>
-    </div><!-- /header -->in
+    </div><!-- /header -->
 
     <div role="main" class="ui-content">
         <nav>
