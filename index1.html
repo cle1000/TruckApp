@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="de" ng-app="truckApp">
+<head>
+    <meta charset="utf-8">
+
+    <title>mto - multimodaler transport operator</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- styles for jquery-mobile and datepicker -->
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.0.min.css" />
+   <link rel="stylesheet" href="css/jquery.mobile.datepicker.css" />
+
+    <!-- mto custom styles -->
+     <link href="css/style.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="css/preloader.css" type="text/css" media="screen, print"/>
+
+    <!-- include jquery and jquery-ui -->
+    
+
+</head>
+<body ng-controller="InputDataCtrl" onLoad="initFastButtons();">
+<div id="preloader">
+	<div id="status">&nbsp;</div>
+</div>
+
+<span id="fastclick">
+<!-- LANDING PAGE -->
+<div data-role="page" id="home">
+    <div data-role="header" data-position="fixed">
+        <h1>mto</h1>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+        <nav>
+            <ul data-role="listview" data-inset="true">
+                <li><a href="#anmelden">Anmelden</a></li>
+                <li><a href="#angebote">Angebote</a></li>
+            </ul>
+        </nav>
+    </div><!-- /content -->
+
+    <!-- footer added via jquery -->
+</div><!-- /page -->
+
+<!-- ANMELDEN -->
+<div data-role="page" id="anmelden">
+
+    <div data-role="header" data-position="fixed" data-add-back-btn="true" data-back-btn-text="Zurück">
+        <h1>Anmelden</h1>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+        <div data-role="collapsible-set">
+
+            <!-- Fracht anmelden -->
+            <div data-role="collapsible" data-inset="true">
+                <h4>Fracht</h4>
+                <form action="" method="post" onsubmit="sendData('cargo')" id="cargo">
+
+					<fieldset>
+                        <legend class="first" >Kundendaten</legend>
+
+                        <label for="cargo_name">Name</label>
+                        <input name="name" id="cargo_name" type="text" placeholder="Name"/>
+
+                     
+                        <label for="cargo_telephone" class="required">Telefon</label>
+                        <input name="telephone" id="cargo_telephone" type="text" placeholder="Telefon" required="">
+
+                    </fieldset>
+
+                    <fieldset>
+                        <legend >Ihre Ladung von ...</legend>
+
+                        <label for="cargo_country_from" class="select required">Land</label>
+                        <select name="country_from" id="cargo_country_from" class="countries" required="">
+                            <!-- options loaded via jquery -->
+                        </select>
+
+                        <label for="cargo_plz_from" class="required">PLZ</label>
+                        <input name="plz_from" id="cargo_plz_from" value="" type="number" placeholder="Postleitzahl" required="">
+                    </fieldset>
+                    
+                    <fieldset>
+                        <legend>nach...</legend>
+
+                        <label for="cargo_country_to" class="select required">Land</label>
+                        <select name="country_to" id="cargo_country_to" class="countries" required="">
+                            <!-- options loaded via jquery -->
+                        </select>
+
+                        <label for="cargo_plz_to" class="required">PLZ</label>
+                        <input name="plz_to" id="cargo_plz_to" value="" type="number" placeholder="Postleitzahl" required="">
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>am ...</legend>
+
+                        <label for="cargo_date" class="required">Datum</label>
+                        <input name="date" id="cargo_date" class="datepicker" data-role="date" data-inline="true" type="text" required="">
+                    </fieldset>
+					
+					<fieldset>
+					<legend>Zusatzinfos</legend>
+					<div data-role="collapsible" data-inset="true">
+                		<h4>Transportdaten</h4>
+		                    <label for="cargo_what" >Ware</label>
+		                    <input name="what" id="cargo_ware" type="text" placeholder="Ware">
+
+		                    <label for="cargo_length" >Lademeter</label>
+		                    <input name="length" id="cargo_length" type="text" placeholder="10m">
+
+		                    <label for="cargo_weight" >Gewicht</label>
+		                    <input name="weight" id="cargo_weight" type="text" placeholder="15t">
+
+							<label for="cargo_price" >Frachtrate</label>
+		                    <input name="price" id="cargo_price" type="text" placeholder="€ 1000,00">
+					</div>
+					<div data-role="collapsible" data-inset="true">
+                		<h4>Benötigter LKW</h4>
+                        <label for="cargo_lkw_art" class="select">LKW-Art</label>
+                        <select name="lkw_art" id="cargo_lkw_art" type="text" class="vehicleTyp" placeholder="LKW-Art">
+</select>
+                        <label for="cargo_lkw_aufbau" class="select">LKW-Aufbau</label>
+                        <select name="lkw_aufbau" id="cargo_lkw_aufbau" type="text" class="superstructure" >
+</select>
+                        <label for="cargo_lkw_ausstattung">Ausstattung</label>
+                        <input name="lkw_ausstattung" id="cargo_lkw_ausstattung" type="text" placeholder="Ausstattung">
+
+                        <label for="lkw_ggvs">GGVS</label>
+                        <select name="lkw_ggvs" id="lkw_ggvs" data-role="slider">
+                            <option value="Nein" selected>Nein</option>
+                            <option value="Ja">Ja</option>
+                        </select>
+
+                        <label for="cargo_notes">Bemerkungen</label>
+                        <textarea name="notes" id="cargo_notes" placeholder="Eventuelle Anmerkungen ..."></textarea>
+					</div>
+                    </fieldset>
+
+                    
+
+                    <fieldset>
+                        <button class="ui-shadow ui-btn ui-corner-all" type="submit" id="submit_cargo">Absenden</button>
+                    </fieldset>
+					 <input type="hidden" name="Type" value="App_Fracht">
+                </form>
+            </div><!-- /fracht -->
+
+            <!-- LKW anmelden -->
+            <div data-role="collapsible" data-inset="true" data-theme="b" data-content-theme="b">
+                <h4>LKW</h4>
+                <form action="" onSubmit="sendData('lkw')" method="post" id="lkw">
+
+			 <fieldset>
+                        <legend  class="first">Kundendaten</legend>
+
+                        <label for="lkw_name">Name</label>
+                        <input name="name" id="lkw_name" type="text" placeholder="Name" >
+
+                        <label for="lkw_telephone" class="required">Telefon</label>
+                        <input name="telephone" id="lkw_telephone" type="text" placeholder="Telefon" required="">
+
+                    </fieldset>
+                    <fieldset>
+                        <legend>Ihr freier LKW von...</legend>
+
+                        <label for="lkw_country_from" class="select">Land</label>
+                        <select name="country_from" id="lkw_country_from" class="countries" >
+                            <!-- options loaded via jquery -->
+                        </select>
+
+                        <label for="lkw_plz_from" class="required">PLZ</label>
+                        <input name="plz_from" id="lkw_plz_from" value="" type="number" placeholder="Postleitzahl" required="">
+</fieldset>
+
+					<fieldset>
+                        <legend>nach...</legend>
+
+                        <label for="lkw_country_to" class="select">Land</label>
+                        <select name="country_to" id="lkw_country_to" class="countries" >
+                            <!-- options loaded via jquery -->
+                        </select>
+
+                        <label for="lkw_plz_to" class="required">PLZ</label>
+                        <input name="plz_to" id="lkw_plz_to" value="" type="number" placeholder="Postleitzahl" required="">
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>am ...</legend>
+
+                        <label for="lkw_date" class="required">Date</label>
+                        <input name="date" readonly="true" id="lkw_date" class="datepicker" data-role="date" data-inline="true" type="text" required="">
+                    </fieldset>
+
+                    <fieldset>
+					<legend>Zusatzinfos</legend>
+						<div data-role="collapsible" data-inset="true">
+
+                        <h4>LKW-Daten</h4>
+
+                        <label for="lkw_art" class="select">LKW-Art</label>
+                        <select name="lkw_art" id="lkw_art" type="text" class="vehicleTyp" placeholder="LKW-Art">
+</select>
+                        <label for="lkw_aufbau" class="select">LKW-Aufbau</label>
+                        <select name="lkw_aufbau" id="lkw_aufbau" type="text" class="superstructure" placeholder="LKW-Aufbau" required=""></select>
+
+                        <label for="lkw_ausstattung">Ausstattung</label>
+                        <input name="lkw_ausstattung" id="lkw_ausstattung" type="text" placeholder="Ausstattung">
+
+                        <label for="lkw_ggvs">GGVS</label>
+                        <select name="lkw_ggvs" id="lkw_ggvs" data-role="slider">
+                            <option value="Nein" selected>Nein</option>
+                            <option value="Ja">Ja</option>
+                        </select>
+
+                        <label for="lkw_notes">Bemerkungen</label>
+                        <textarea name="notes" id="lkw_notes" placeholder="Eventuelle Anmerkungen ..."></textarea>
+						</div>
+                    </fieldset>
+
+                   
+
+                    <fieldset>
+                        <button class="ui-shadow ui-btn ui-corner-all" type="submit" onclick="sendFid="submit_lkw">Absenden</button>
+                    </fieldset>
+					 <input type="hidden" name="Type" value="App_LKW">
+                </form>
+            </div><!-- /lkw -->
+        </div>
+    </div><!-- /content -->
+
+    <!-- footer added via jquery -->
+</div><!-- /page -->
+
+<!-- ANGEBOTE -->
+<div data-role="page" id="angebote">
+
+    <div data-role="header" data-position="fixed" data-add-back-btn="true" data-back-btn-text="Zurück">
+        <h1>Angebote</h1>
+		
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+		<button ng-click="loadData()" data-inline="true" data-icon="refresh">Refresh</button>
+        <div data-role="collapsible-set">
+            <div data-role="collapsible">
+                <h4>Fracht</h4>
+                <ul data-role="listview" data-inset="false">
+                    <!-- links # + id -->
+                    <li ng-repeat="inputData in inputDatas | filter:{Type:'0'}"><a class="ng-binding ui-btn ui-btn-icon-right ui-icon-carat-r" href="#{{inputData.ID}}">{{inputData.From}} - {{inputData.To}} <br> {{inputData.Date}}</a>
+					</li>
+                </ul>
+            </div>
+            <div data-role="collapsible" data-theme="b" data-content-theme="b">
+                <h4>LKW</h4>
+                <ul data-role="listview" data-inset="false">
+                    <!-- links # + id -->
+                    <li ng-repeat="inputData in inputDatas | filter:{Type:'1'}"><a class="ng-binding ui-btn ui-btn-icon-right ui-icon-carat-r" href="#{{inputData.ID}}">{{inputData.From}} - {{inputData.To}} <br> {{inputData.Date}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div><!-- /content -->
+	<div data-role="footer" data-position="fixed"><h4>&copy; mto 2014</h4></div>
+    <!-- footer added via jquery -->
+</div><!-- /page -->
+
+<!-- ########################
+dynamically add divs below here
+(markup as shown in examples; attributes for lkw: data-theme="b" data-content-theme="b")
+################## -->
+
+<!-- fracht example -->
+<div ng-repeat="inputData in inputDatas | filter:{Type:'0'}" data-role="page" id="{{inputData.ID}}">
+
+    <div data-role="header" data-position="fixed" data-add-back-btn="true" data-back-btn-text="Zurück">
+        <h1>Details</h1>
+		<img src="img/logo_small.png" alt="Logo" class="ui-btn-right">
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+        <ul data-role="listview" data-inset="true">
+            <li data-role="list-divider">{{inputData.From}} - {{inputData.To}}</li>
+            <li>Datum: {{inputData.Date}}</li>
+            <li ng-show="inputData.What != ''">Was: {{inputData.What}}</li>
+            <li ng-show="inputData.LoadingLength != ''">Länge: {{inputData.LoadingLength}}</li>
+            <li ng-show="inputData.Weight != ''">Gewicht: {{inputData.Weight}}</li>
+            <li ng-show="inputData.Truck != ''">gesuchter LKW: {{inputData.Truck}}</li>
+        </ul>
+    </div><!-- /content -->
+	<div data-role="footer" data-position="fixed"><h4>&copy; mto 2014</h4></div>
+    <!-- footer added via jquery -->
+</div><!-- /page -->
+
+
+<!-- lkw example -->
+<div ng-repeat="inputData in inputDatas | filter:{Type:'1'}" data-role="page" id="{{inputData.ID}}" data-theme="b" data-content-theme="b">
+
+    <div data-role="header" data-position="fixed" data-add-back-btn="true" data-back-btn-text="Zurück">
+        <h1>Details</h1>
+		<img src="img/logo_small.png" alt="Logo" class="ui-btn-right">
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+        <ul data-role="listview" data-inset="true">
+              <li data-role="list-divider">{{inputData.From}} - {{inputData.To}}</li>
+            <li>Datum: {{inputData.Date}}</li>
+            <li>LKW: {{inputData.Truck}}</li>
+        </ul>
+    </div><!-- /content -->
+
+    <!-- footer added via jquery -->
+</div><!-- /page -->
+		<script src="scripts/jquery-1.9.1.min.js"></script>
+!-- Preloader -->
+<script type="text/javascript">
+	//<![CDATA[
+		$(window).load(function() { // makes sure the whole site is loaded
+			$('#status').fadeOut(); // will first fade out the loading animation
+			$('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
+			$('body').delay(350).css({'overflow':'visible'});
+		})
+	//]]>
+</script> 
+    <script src="scripts/jquery-ui-1.10.3.custom.min.js"></script>
+
+    <script src="scripts/angular.min.js"></script>
+	<!--script src="phonegap.js"></script-->
+	<script src="scripts/jquery.jsonp-2.1.4.min.js"></script>
+	<script src="scripts/app.js"></script>
+	<script src="scripts/setup.js"></script>
+
+    <!-- initialize jquery-mobile and datepicker -->
+    <script src="scripts/jquery.mobile-1.4.0.min.js"></script>
+    <script src="scripts/jquery.mobile.datepicker.js"></script>
+	<script src="scripts/FastClick.js"</script>
+	
+
+    </span>
+</body>
+</html>
