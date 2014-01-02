@@ -34,6 +34,9 @@ $('.superstructure').append(superstructures);
         });
     
         $( document ).on( "mobileinit", function() {
-            $.mobile.defaultPageTransition = 'slide'; // override default transition
+			$.mobile.defaultPageTransition   = 'none'
+		$.mobile.defaultDialogTransition = 'none'
+		$.mobile.buttonMarkup.hoverDelay = 0
+           // $.mobile.defaultPageTransition = 'slide'; // override default transition
         });
 
