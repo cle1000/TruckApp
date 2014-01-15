@@ -26,6 +26,7 @@ function sendData(formId) {
 	// validation Code
 	$.ajax({
 		type : 'POST',
+		crossDomain : true,
 		url : 'http://mtoserver.dyndns.org/mto/formToMail.php',
 		data : $("#" + formId).serialize(),
 		success : function(data) {
@@ -34,17 +35,5 @@ function sendData(formId) {
 	});
 	window.history.go(-1);
 	showAlert("Die Mitarbeiter von MTO melden sich in Kürze", "Info");
-}
-
-function saveUserInfos(){
-	var name = document.getElementById("name_input").value;
-	var telephone = document.getElementById("telephone_input").value;
-	
-	window.localStorage.setItem("name", name);
-	window.localStorage.setItem("telephone", telephone);
-	
-	alert (window.localStorage.getItem("name"));
-	/*window.localStorage.getItem*/
-
 }
 
