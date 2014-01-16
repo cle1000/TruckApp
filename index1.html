@@ -26,39 +26,7 @@
 	</div>
 
 	<span id="fastclick">
-	
-		<div data-role="page" id="first_start">
-			<div data-role="header" data-position="fixed">
-				<h1>mto</h1>
-			</div>
-			<!-- /header -->
-			
-			<div role="main" class="ui-content">
-				<nav>
-					<ul data-role="listview" data-inset="true">
-						<form action="" method="post" onsubmit="saveUserInfos()"
-					
-							id="first_infos">
-							<fieldset>
-								<legend class="first">Ihre Daten...</legend>
-
-								<label for="name_input" class="required">Name</label> 
-								<input name="name" id="name_input" type="text" placeholder="Name" /> 
-								<label for="telephone_input" class="required">Telefon</label> 
-								<input name="telephone" id="telephone_input" type="text" placeholder="Telefon" required="">
-								<button class="ui-shadow ui-btn ui-corner-all" type="submit" id="submit_input">Speichern</button>
-
-							</fieldset>
-						</form>
-					</ul>
-				</nav>
-			</div>
-			<!-- /content -->
-
-		</div>
-
-
-		<div data-role="page" id="home">
+		<div class="home" data-role="page" id="home">
 			<div data-role="header" data-position="fixed">
 				<h1>mto</h1>
 			</div>
@@ -75,8 +43,7 @@
 			<!-- /content -->
 
 			<!-- footer added via jquery -->
-		</div>
-		<!-- /page --> <!-- ANMELDEN -->
+		</div> <!-- /page --> <!-- ANMELDEN -->
 		<div data-role="page" id="anmelden">
 
 			<div data-role="header" data-position="fixed"
@@ -98,10 +65,10 @@
 								<legend class="first">Kundendaten</legend>
 
 								<label for="cargo_name">Name</label> <input name="name"
-									id="cargo_name" type="text" placeholder="Name" /> <label
-									for="cargo_telephone" class="required">Telefon</label> <input
-									name="telephone" id="cargo_telephone" type="text"
-									placeholder="Telefon" required="">
+									id="cargo_name" class="name" type="text" placeholder="Name" />
+								<label for="cargo_telephone" class="required">Telefon</label> <input
+									name="telephone" class="telephone" id="cargo_telephone"
+									type="text" placeholder="Telefon" required="">
 
 							</fieldset>
 
@@ -193,10 +160,10 @@
 								<legend class="first">Kundendaten</legend>
 
 								<label for="lkw_name">Name</label> <input name="name"
-									id="lkw_name" type="text" placeholder="Name"> <label
-									for="lkw_telephone" class="required">Telefon</label> <input
-									name="telephone" id="lkw_telephone" type="text"
-									placeholder="Telefon" required="">
+									class="name" id="lkw_name" type="text" placeholder="Name">
+								<label for="lkw_telephone" class="required">Telefon</label> <input
+									name="telephone" class="telephone" id="lkw_telephone"
+									type="text" placeholder="Telefon" required="">
 
 							</fieldset>
 							<fieldset>
@@ -268,8 +235,7 @@
 			<!-- /content -->
 
 			<!-- footer added via jquery -->
-		</div>
-		<!-- /page --> <!-- ANGEBOTE -->
+		</div> <!-- /page --> <!-- ANGEBOTE -->
 		<div data-role="page" id="angebote">
 
 			<div data-role="header" data-position="fixed"
@@ -311,8 +277,7 @@
 				<h4>&copy; mto 2014</h4>
 			</div>
 			<!-- footer added via jquery -->
-		</div>
-		<!-- /page --> <!-- ########################
+		</div> <!-- /page --> <!-- ########################
 dynamically add divs below here
 (markup as shown in examples; attributes for lkw: data-theme="b" data-content-theme="b")
 ################## --> <!-- fracht example -->
@@ -345,8 +310,7 @@ dynamically add divs below here
 				<h4>&copy; mto 2014</h4>
 			</div>
 			<!-- footer added via jquery -->
-		</div>
-		<!-- /page --> <!-- lkw example -->
+		</div> <!-- /page --> <!-- lkw example -->
 		<div ng-repeat="inputData in inputDatas | filter:{Type:'1'}"
 			data-role="page" id="{{inputData.ID}}" data-theme="b"
 			data-content-theme="b">
@@ -369,24 +333,20 @@ dynamically add divs below here
 			<!-- /content -->
 
 			<!-- footer added via jquery -->
-		</div>
-		
-		 <script src="scripts/jquery-1.9.1.min.js"></script> 
-		
-		<script type="text/javascript">
-			//<![CDATA[
-			$(window).load(function() { // makes sure the whole site is loaded
-				$('#status').fadeOut(); // will first fade out the loading animation
-				$('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
-				$('body').delay(350).css({
-					'overflow' : 'visible'
+		</div> <script src="scripts/initfirstpage.js"></script> <script
+			src="scripts/jquery-1.9.1.min.js"></script> <script
+			type="text/javascript">
+				//<![CDATA[
+				$(window).load(function() { // makes sure the whole site is loaded
+					$('#status').fadeOut(); // will first fade out the loading animation
+					$('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
+					$('body').delay(350).css({
+						'overflow' : 'visible'
+					});
 				});
-			});
-			
-			alert (window.localStorage.getItem("name"));
-			
-			//]]>
-		</script> <script src="scripts/jquery-ui-1.10.3.custom.min.js"></script> <script
+
+				//]]>
+			</script> <script src="scripts/jquery-ui-1.10.3.custom.min.js"></script> <script
 			src="scripts/angular.min.js"></script> <script src="phonegap.js"></script>
 		<script src="scripts/jquery.jsonp-2.1.4.min.js"></script> <script
 			src="scripts/app.js"></script> <script src="scripts/setup.js"></script>
@@ -399,3 +359,10 @@ dynamically add divs below here
 	</span>
 </body>
 </html>
+
+
+
+
+
+
+

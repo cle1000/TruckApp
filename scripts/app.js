@@ -24,27 +24,25 @@ function showAlert (message, title){
 
 function sendData(formId) {
 	// validation Code
-	$.ajax({
+	var form = document.getElementById(formId);
+	
+	var name = form.elements["name"].value;
+	var telephone = form.elements["telephone"].value;
+	window.localStorage.setItem("name", name);
+	window.localStorage.setItem("telephone", telephone);
+	
+	/*$.ajax({
 		type : 'POST',
 		url : 'http://mtoserver.dyndns.org/mto/formToMail.php',
 		data : $("#" + formId).serialize(),
 		success : function(data) {
 				alert ("success");
 		}
-	});
+	});*/
+
 	window.history.go(-1);
 	showAlert("Die Mitarbeiter von MTO melden sich in Kürze", "Info");
 }
 
-function saveUserInfos(){
-	var name = document.getElementById("name_input").value;
-	var telephone = document.getElementById("telephone_input").value;
-	
-	window.localStorage.setItem("name", name);
-	window.localStorage.setItem("telephone", telephone);
-	
-	alert (window.localStorage.getItem("name"));
-	/*window.localStorage.getItem*/
 
-}
 

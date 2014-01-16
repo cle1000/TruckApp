@@ -45,7 +45,6 @@ $(document)
 							.append(
 									'<div data-role="footer" data-position="fixed"><h4>&copy; mto 2014</h4></div>');
 				});
-$(document).
 
 $(document).on("mobileinit", function() {
 	$.mobile.defaultPageTransition = 'none'
@@ -53,3 +52,5 @@ $(document).on("mobileinit", function() {
 	$.mobile.buttonMarkup.hoverDelay = 0
 	// $.mobile.defaultPageTransition = 'slide'; // override default transition
 });
+
+
