@@ -13,8 +13,7 @@
 
 <!-- mto custom styles -->
 <link href="css/style.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="css/preloader.css" type="text/css"
-	media="screen, print" />
+<link rel="stylesheet" href="css/preloader.css" type="text/css" media="screen, print" />
 
 <!-- include jquery and jquery-ui -->
 
@@ -39,11 +38,15 @@
 						<li><a href="#anmelden">Anmelden</a></li>
 					</ul>
 				</nav>
+				
+				<img class="titlePic" src="img/truck_leere-volle.png">
 			</div>
 			<!-- /content -->
 
 			<!-- footer added via jquery -->
-		</div> <!-- /page --> <!-- ANMELDEN -->
+		</div> <!-- /page --> 
+		
+		<!-- ANMELDEN -->
 		<div data-role="page" id="anmelden">
 
 			<div data-role="header" data-position="fixed"
@@ -57,7 +60,7 @@
 
 					<!-- Fracht anmelden -->
 					<div data-role="collapsible" data-inset="true">
-						<h4>Fracht</h4>
+						<h4>Fracht<img src="img/cargo.png"></h4>
 						<form action="" method="post" onsubmit="sendData('cargo')"
 							id="cargo">
 
@@ -137,8 +140,6 @@
 								</div>
 							</fieldset>
 
-
-
 							<fieldset>
 								<button class="ui-shadow ui-btn ui-corner-all" type="submit"
 									id="submit_cargo">Absenden</button>
@@ -153,7 +154,7 @@
 					<!-- LKW anmelden -->
 					<div data-role="collapsible" data-inset="true" data-theme="b"
 						data-content-theme="b">
-						<h4>LKW</h4>
+						<h4>LKW<img src="img/truck.png"></h4>
 						<form action="" onSubmit="sendData('lkw')" method="post" id="lkw">
 
 							<fieldset>
@@ -221,7 +222,6 @@
 								</div>
 							</fieldset>
 
-
 							<fieldset>
 								<button class="ui-shadow ui-btn ui-corner-all" type="submit"
 									id="submit_lkw">Absenden</button>
@@ -249,7 +249,7 @@
 				<button ng-click="loadData()" data-inline="true" data-icon="refresh">Refresh</button>
 				<div data-role="collapsible-set">
 					<div data-role="collapsible">
-						<h4>Fracht</h4>
+						<h4>Fracht<img src="img/cargo.png"></h4>
 						<ul data-role="listview" data-inset="false">
 							<!-- links # + id -->
 							<li ng-repeat="inputData in inputDatas | filter:{Type:'0'}"><a
@@ -260,7 +260,7 @@
 						</ul>
 					</div>
 					<div data-role="collapsible" data-theme="b" data-content-theme="b">
-						<h4>LKW</h4>
+						<h4>LKW<img src="img/truck.png"></h4>
 						<ul data-role="listview" data-inset="false">
 							<!-- links # + id -->
 							<li ng-repeat="inputData in inputDatas | filter:{Type:'1'}"><a
@@ -277,10 +277,13 @@
 				<h4>&copy; mto 2014</h4>
 			</div>
 			<!-- footer added via jquery -->
-		</div> <!-- /page --> <!-- ########################
-dynamically add divs below here
-(markup as shown in examples; attributes for lkw: data-theme="b" data-content-theme="b")
-################## --> <!-- fracht example -->
+		</div> <!-- /page --> 
+		
+		<!-- ########################
+		dynamically add divs below here
+		(markup as shown in examples; attributes for lkw: data-theme="b" data-content-theme="b")
+		################## --> 
+		<!-- fracht example -->
 		<div ng-repeat="inputData in inputDatas | filter:{Type:'0'}"
 			data-role="page" id="{{inputData.ID}}">
 
@@ -310,12 +313,14 @@ dynamically add divs below here
 				<h4>&copy; mto 2014</h4>
 			</div>
 			<!-- footer added via jquery -->
-		</div> <!-- /page --> <!-- lkw example -->
+		</div> <!-- /page --> 
+		
+		<!-- lkw example -->
 		<div ng-repeat="inputData in inputDatas | filter:{Type:'1'}"
-			data-role="page" id="{{inputData.ID}}" data-theme="b"
-			data-content-theme="b">
+			data-role="page" id="{{inputData.ID}}" data-theme="a"
+			data-content-theme="a">
 
-			<div data-role="header" data-position="fixed"
+			<div data-role="header" data-theme="b" data-position="fixed"
 				data-add-back-btn="true" data-back-btn-text="Zurück">
 				<h1>Details</h1>
 				<img src="img/logo_small.png" alt="Logo" class="ui-btn-right">
@@ -324,7 +329,7 @@ dynamically add divs below here
 
 			<div role="main" class="ui-content">
 				<ul data-role="listview" data-inset="true">
-					<li data-role="list-divider">{{inputData.From}} -
+					<li data-role="list-divider" data-theme="b">{{inputData.From}} -
 						{{inputData.To}}</li>
 					<li>Datum: {{inputData.Date}}</li>
 					<li>LKW: {{inputData.Truck}}</li>
@@ -346,8 +351,8 @@ dynamically add divs below here
 				});
 
 				//]]>
-			</script> <script src="scripts/jquery-ui-1.10.3.custom.min.js"></script>
-<!-- <script src="scripts/angular.min.js"></script> -->
+			</script> <script src="scripts/jquery-ui-1.10.3.custom.min.js"></script> <script
+			src="scripts/angular.min.js"></script> 
 			<!--<script src="phonegap.js"></script>-->
 		<script src="scripts/jquery.jsonp-2.1.4.min.js"></script> <script
 			src="scripts/app.js"></script> <script src="scripts/setup.js"></script>

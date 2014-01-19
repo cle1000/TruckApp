@@ -1,3 +1,11 @@
+git add *.png
+git add *.img
+git add *.gif
+git add *.xml
+git add *.php
+git add *.html
+git add *.css
+git add *.js
 git commit -m "auto"
-git push -u https://github.com/cle1000/TruckApp 
+git push -u https://github.com/cle1000/TruckApp master
 

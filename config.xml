@@ -12,12 +12,6 @@
 <icon gap:density="hdpi" gap:platform="android" src="img/icon-72-hdpi.png" />
 <icon gap:density="xhdpi" gap:platform="android" src="img/icon-96-xhdpi.png" />
 
-<icon src="img/icon-57.png" gap:platform="ios" width="57" height="57" />
-<icon src="img/icon-72.png" gap:platform="ios" width="72" height="72" />
-<icon src="img/icon-114.png" gap:platform="ios" width="114" height="114" />
-
-<icon src="icons/icon-57.png" gap:platform="winphone" />
-<icon src="icons/icon-57.png" gap:platform="winphone" gap:role="background" />
 
     <!-- versionCode is optional and Android only -->
 

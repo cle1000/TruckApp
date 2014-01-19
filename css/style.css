@@ -1,3 +1,9 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,700);
+
+* {
+	font-family: 'Raleway' !important;
+}
+
 form legend {
     background: none repeat scroll 0 0 #E9E9E9;
     border-top: 1px solid #DDDDDD;
@@ -14,10 +20,10 @@ form legend {
     width: 100%;
 }
 
-form legend.first {
+/*form legend.first {
    margin: -0.5em -1em 1em;
     border-top: none;
-}
+}*/
 
 #lkw legend {
     background: none repeat scroll 0 0 #1D1D1D;
@@ -30,6 +36,10 @@ form legend.first {
 form label.required:after {
     color: #FF0000;
     content: " *";
+}
+
+.ui-collapsible-content {
+	padding-top: 0;
 }
 
 #lkw .ui-datepicker-calendar td, #lkw .ui-datepicker .ui-datepicker-header {
@@ -45,6 +55,28 @@ form label.required:after {
     color: #FFFFFF;
     font-weight: 700;
     text-shadow: 0 1px 0 #111111;
+}
+
+h4 img {
+	vertical-align: middle;
+	width: 140px;
+	margin-left: 20px;
+}
+
+.ui-body-b, .ui-page-theme-b .ui-body-inherit, html .ui-bar-b .ui-body-inherit, html .ui-body-b .ui-body-inherit, html body .ui-group-theme-b .ui-body-inherit, html .ui-panel-page-container-b {
+    background: url('../img/dark_bg.png');
+}
+
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
+	background: url('../img/light_bg.png');
+}
+
+.ui-overlay-b, .ui-page-theme-b, .ui-page-theme-b .ui-panel-wrapper {
+	background: url('../img/dark_bg.png');
+}
+
+.titlePic {
+	width: 100%;
 }
 
 
