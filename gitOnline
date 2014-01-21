@@ -1,3 +1,4 @@
+git add fonts/*
 git add *.png
 git add *.img
 git add *.gif
