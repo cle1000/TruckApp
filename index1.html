@@ -13,7 +13,8 @@
 
 <!-- mto custom styles -->
 <link href="css/style.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="css/preloader.css" type="text/css" media="screen, print" />
+<link rel="stylesheet" href="css/preloader.css" type="text/css"
+	media="screen, print" />
 
 <!-- include jquery and jquery-ui -->
 
@@ -25,6 +26,45 @@
 	</div>
 
 	<span id="fastclick">
+		<div data-role="page" id="first_start" class="first_start">
+
+			<div data-role="header" data-position="fixed">
+				<h1>mto</h1>
+			</div>
+			<!-- /header -->
+			<div role="main" class="ui-content">
+				<div
+					class="ui-collapsible-set ui-collapsible ui-collapsible-themed-content ui-collapsible-inset ui-corner-all">
+					<div data-insert="true"
+						class="ui-collapsible-content ui-body-inherit">
+						<form class="css-form" method="post"
+							id="first_infos" name="first_infos" novalidate>
+							<fieldset>
+								<legend class="first">Ihre Daten...</legend>
+								<label for="name_input" class="required">Name</label> <input
+									name="name" ng-model="username" id="name_input" type="text"
+									placeholder="Name" required /> <label for="telephone_input"
+									class="required">Telefon</label> <input name="telephone"
+									ng-model="userphone" id="telephone_input" type="tel"
+									placeholder="Telefon" required />
+							</fieldset>
+							<div class="ui-grid-a">
+								<div class="ui-block-a">
+									<button
+										ng-disabled="first_infos.name.$invalid || first_infos.telephone.$invalid"
+										class="ui-shadow ui-btn ui-corner-all" type="submit"
+										ng-click="saveUserInfosBtn()"  id="submit_input">Speichern</button>
+								</div>
+								<div class="ui-block-b">
+									<button class="ui-shadow ui-btn ui-corner-all" type="submit"
+										ng-click="setFirstStartBtn()" id="submit_input">Überspringen</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+				</div>
 		<div class="home" data-role="page" id="home">
 			<div data-role="header" data-position="fixed">
 				<h1>mto</h1>
@@ -38,15 +78,13 @@
 						<li><a href="#anmelden">Anmelden</a></li>
 					</ul>
 				</nav>
-				
+
 				<img class="titlePic" src="img/truck_leere-volle.png">
 			</div>
 			<!-- /content -->
 
 			<!-- footer added via jquery -->
-		</div> <!-- /page --> 
-		
-		<!-- ANMELDEN -->
+		</div> <!-- /page --> <!-- ANMELDEN -->
 		<div data-role="page" id="anmelden">
 
 			<div data-role="header" data-position="fixed"
@@ -60,43 +98,44 @@
 
 					<!-- Fracht anmelden -->
 					<div data-role="collapsible" data-inset="true">
-						<h4>Fracht<img src="img/cargo.png"></h4>
-						<form action="" method="post" onsubmit="sendData('cargo')"
-							id="cargo">
+						<h4>
+							Fracht<img src="img/cargo.png">
+						</h4>
+						<form name="cargo" id="cargo" ng-submit="sendData('cargo')"
+							novalidate class="css-form">
 
 							<fieldset>
 								<legend class="first">Kundendaten</legend>
 
 								<label for="cargo_name">Name</label> <input name="name"
-									id="cargo_name" class="name" type="text" placeholder="Name" />
-								<label for="cargo_telephone" class="required">Telefon</label> <input
-									name="telephone" class="telephone" id="cargo_telephone"
-									type="text" placeholder="Telefon" required="">
-
+									ng-model="username" id="cargo_name" class="name" type="text"
+									placeholder="Name" /> <label for="cargo_telephone"
+									name="telephone" class="required">Telefon</label> <input
+									class="telephone" name="telephone" id="cargo_telephone"
+									type="tel" ng-model="userphone" placeholder="Telefon"
+									required />
 							</fieldset>
 
 							<fieldset>
 								<legend>Ihre Ladung von ...</legend>
 
-								<label for="cargo_country_from" class="select required">Land</label>
-								<select name="country_from" id="cargo_country_from"
-									class="countries" required="">
+								<label for="cargo_country_from" class="select">Land</label> <select
+									name="country_from" id="cargo_country_from" class="countries">
 									<!-- options loaded via jquery -->
 								</select> <label for="cargo_plz_from" class="required">PLZ</label> <input
 									name="plz_from" id="cargo_plz_from" value="" type="number"
-									placeholder="Postleitzahl" required="">
+									placeholder="Postleitzahl" ng-model="cargo_plzfrom" required>
 							</fieldset>
 
 							<fieldset>
 								<legend>nach...</legend>
 
-								<label for="cargo_country_to" class="select required">Land</label>
-								<select name="country_to" id="cargo_country_to"
-									class="countries" required="">
+								<label for="cargo_country_to" class="select">Land</label> <select
+									name="country_to" id="cargo_country_to" class="countries">
 									<!-- options loaded via jquery -->
 								</select> <label for="cargo_plz_to" class="required">PLZ</label> <input
 									name="plz_to" id="cargo_plz_to" value="" type="number"
-									placeholder="Postleitzahl" required="">
+									placeholder="Postleitzahl" ng-model="cargo_plzto" required="">
 							</fieldset>
 
 							<fieldset>
@@ -104,7 +143,7 @@
 
 								<label for="cargo_date" class="required">Datum</label> <input
 									name="date" id="cargo_date" class="datepicker" data-role="date"
-									data-inline="true" type="text" required="">
+									data-inline="true" ng-model="cargo_date" required>
 							</fieldset>
 
 							<fieldset>
@@ -141,8 +180,19 @@
 							</fieldset>
 
 							<fieldset>
-								<button class="ui-shadow ui-btn ui-corner-all" type="submit"
-									id="submit_cargo">Absenden</button>
+								<span class="help-block"
+									ng-show="cargo.telephone.$error.required"><p>Bitte
+										geben Sie Ihre Telefonnummer ein</p></span> <span class="help-block"
+									ng-show="cargo.plz_from.$error.required"><p>Bitte
+										geben Sie den Startpunkt der Route ein</p></span> <span
+									class="help-block" ng-show="cargo.plz_to.$error.required"><p>Bitte
+										geben Sie den Endpunkt der Route ein</p></span>
+							</fieldset>
+
+							<fieldset>
+								<button
+									ng-disabled="cargo.telephone.$invalid || cargo.plz_from.$invalid || cargo.plz_to.$invalid"
+									class="ui-shadow ui-btn ui-corner-all" id="submit_cargo">Absenden</button>
 							</fieldset>
 							<input type="hidden" name="Type" value="App_Fracht"> <input
 								type="hidden" name="city_from" value=""> <input
@@ -154,17 +204,21 @@
 					<!-- LKW anmelden -->
 					<div data-role="collapsible" data-inset="true" data-theme="b"
 						data-content-theme="b">
-						<h4>LKW<img src="img/truck.png"></h4>
-						<form action="" onSubmit="sendData('lkw')" method="post" id="lkw">
+						<h4>
+							LKW<img src="img/truck.png">
+						</h4>
+						<form onSubmit="sendData('lkw')" name="lkw" id="lkw" novalidate
+							class="css-form">
 
 							<fieldset>
 								<legend class="first">Kundendaten</legend>
 
 								<label for="lkw_name">Name</label> <input name="name"
-									class="name" id="lkw_name" type="text" placeholder="Name">
-								<label for="lkw_telephone" class="required">Telefon</label> <input
-									name="telephone" class="telephone" id="lkw_telephone"
-									type="text" placeholder="Telefon" required="">
+									ng-model="username" class="name" id="lkw_name" type="text"
+									placeholder="Name"> <label for="lkw_telephone"
+									class="required">Telefon</label> <input name="telephone"
+									class="telephone" id="lkw_telephone" type="tel"
+									placeholder="Telefon" ng-model="userphone" required>
 
 							</fieldset>
 							<fieldset>
@@ -174,8 +228,8 @@
 									name="country_from" id="lkw_country_from" class="countries">
 									<!-- options loaded via jquery -->
 								</select> <label for="lkw_plz_from" class="required">PLZ</label> <input
-									name="plz_from" id="lkw_plz_from" value="" type="number"
-									placeholder="Postleitzahl" required="">
+									name="plz_from" id="lkw_plz_from" type="number"
+									placeholder="Postleitzahl" ng-model="plzfrom_lkw" required>
 							</fieldset>
 
 							<fieldset>
@@ -186,7 +240,7 @@
 									<!-- options loaded via jquery -->
 								</select> <label for="lkw_plz_to" class="required">PLZ</label> <input
 									name="plz_to" id="lkw_plz_to" value="" type="number"
-									placeholder="Postleitzahl" required="">
+									placeholder="Postleitzahl" ng-model="plzto_lkw" required>
 							</fieldset>
 
 							<fieldset>
@@ -194,7 +248,8 @@
 
 								<label for="lkw_date" class="required">Date</label> <input
 									name="date" readonly="true" id="lkw_date" class="datepicker"
-									data-role="date" data-inline="true" type="text" required="">
+									data-role="date" data-inline="true" type="text" required
+									ng-model="date_lkw">
 							</fieldset>
 
 							<fieldset>
@@ -208,9 +263,8 @@
 										placeholder="LKW-Art">
 									</select> <label for="lkw_aufbau" class="select">LKW-Aufbau</label> <select
 										name="lkw_aufbau" id="lkw_aufbau" type="text"
-										class="superstructure" placeholder="LKW-Aufbau" required=""></select>
-
-									<label for="lkw_ausstattung">Ausstattung</label> <input
+										class="superstructure" placeholder="LKW-Aufbau"></select> <label
+										for="lkw_ausstattung">Ausstattung</label> <input
 										name="lkw_ausstattung" id="lkw_ausstattung" type="text"
 										placeholder="Ausstattung"> <label for="lkw_ggvs">GGVS</label>
 									<select name="lkw_ggvs" id="lkw_ggvs" data-role="slider">
@@ -223,7 +277,18 @@
 							</fieldset>
 
 							<fieldset>
-								<button class="ui-shadow ui-btn ui-corner-all" type="submit"
+								<span class="help-block" ng-show="lkw.telephone.$error.required"><p>Bitte
+										geben Sie Ihre Telefonnummer ein</p></span> <span class="help-block"
+									ng-show="lkw.plz_from.$error.required"><p>Bitte
+										geben Sie den Startpunkt der Route ein</p></span> <span
+									class="help-block" ng-show="lkw.plz_to.$error.required"><p>Bitte
+										geben Sie den Endpunkt der Route ein</p></span>
+							</fieldset>
+
+							<fieldset>
+								<button
+									ng-disabled="lkw.telephone.$invalid || lkw.plz_from.$invalid || lkw.plz_to.$invalid"
+									class="ui-shadow ui-btn ui-corner-all" type="submit"
 									id="submit_lkw">Absenden</button>
 							</fieldset>
 							<input type="hidden" name="Type" value="App_LKW">
@@ -249,7 +314,9 @@
 				<button ng-click="loadData()" data-inline="true" data-icon="refresh">Refresh</button>
 				<div data-role="collapsible-set">
 					<div data-role="collapsible">
-						<h4>Fracht<img src="img/cargo.png"></h4>
+						<h4>
+							Fracht<img src="img/cargo.png">
+						</h4>
 						<ul data-role="listview" data-inset="false">
 							<!-- links # + id -->
 							<li ng-repeat="inputData in inputDatas | filter:{Type:'0'}"><a
@@ -260,7 +327,9 @@
 						</ul>
 					</div>
 					<div data-role="collapsible" data-theme="b" data-content-theme="b">
-						<h4>LKW<img src="img/truck.png"></h4>
+						<h4>
+							LKW<img src="img/truck.png">
+						</h4>
 						<ul data-role="listview" data-inset="false">
 							<!-- links # + id -->
 							<li ng-repeat="inputData in inputDatas | filter:{Type:'1'}"><a
@@ -277,13 +346,10 @@
 				<h4>&copy; mto 2014</h4>
 			</div>
 			<!-- footer added via jquery -->
-		</div> <!-- /page --> 
-		
-		<!-- ########################
+		</div> <!-- /page --> <!-- ########################
 		dynamically add divs below here
 		(markup as shown in examples; attributes for lkw: data-theme="b" data-content-theme="b")
-		################## --> 
-		<!-- fracht example -->
+		################## --> <!-- fracht example -->
 		<div ng-repeat="inputData in inputDatas | filter:{Type:'0'}"
 			data-role="page" id="{{inputData.ID}}">
 
@@ -313,9 +379,7 @@
 				<h4>&copy; mto 2014</h4>
 			</div>
 			<!-- footer added via jquery -->
-		</div> <!-- /page --> 
-		
-		<!-- lkw example -->
+		</div> <!-- /page --> <!-- lkw example -->
 		<div ng-repeat="inputData in inputDatas | filter:{Type:'1'}"
 			data-role="page" id="{{inputData.ID}}" data-theme="a"
 			data-content-theme="a">
@@ -329,8 +393,8 @@
 
 			<div role="main" class="ui-content">
 				<ul data-role="listview" data-inset="true">
-					<li data-role="list-divider" data-theme="b">{{inputData.From}} -
-						{{inputData.To}}</li>
+					<li data-role="list-divider" data-theme="b">{{inputData.From}}
+						- {{inputData.To}}</li>
 					<li>Datum: {{inputData.Date}}</li>
 					<li>LKW: {{inputData.Truck}}</li>
 				</ul>
@@ -338,33 +402,45 @@
 			<!-- /content -->
 
 			<!-- footer added via jquery -->
-		</div> <script src="scripts/initfirstpage.js"></script> <script
-			src="scripts/jquery-1.9.1.min.js"></script> <script
+			
+			
+		</div> 
+		<script src="scripts/jquery.jsonp-2.1.4.min.js"></script> 
+		<script src="scripts/jquery-1.9.1.min.js"></script>
+		<script src="scripts/jquery-ui-1.10.3.custom.min.js"></script> 
+		<script src="scripts/angular.min.js"></script>
+		<script src="scripts/app.js"></script> 
+		<script src="scripts/setup.js"></script>
+		<script src="scripts/jquery.mobile-1.4.0.min.js"></script>
+		<script	src="scripts/jquery.mobile.datepicker.js"></script>
+		<script src="scripts/FastClick.js"></script>
+		
+			
+		 <script
 			type="text/javascript">
-				//<![CDATA[
-				$(window).load(function() { // makes sure the whole site is loaded
-					$('#status').fadeOut(); // will first fade out the loading animation
-					$('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
-					$('body').delay(350).css({
-						'overflow' : 'visible'
-					});
+			//<![CDATA[
+			$(window).load(function() { // makes sure the whole site is loaded
+				$('#status').fadeOut(); // will first fade out the loading animation
+				$('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
+				$('body').delay(350).css({
+					'overflow' : 'visible'
 				});
+			});
 
-				//]]>
-			</script> <script src="scripts/jquery-ui-1.10.3.custom.min.js"></script> <script
-			src="scripts/angular.min.js"></script> 
+			//]]>
+		</script> 
+		
 			<!--<script src="phonegap.js"></script>-->
-		<script src="scripts/jquery.jsonp-2.1.4.min.js"></script> <script
-			src="scripts/app.js"></script> <script src="scripts/setup.js"></script>
+		
 
-		<!-- initialize jquery-mobile and datepicker --> <script
-			src="scripts/jquery.mobile-1.4.0.min.js"></script> <script
-			src="scripts/jquery.mobile.datepicker.js"></script> <script
-			src="scripts/FastClick.js"></script>
+		<!-- initialize jquery-mobile and datepicker --> 
+		
 
 	</span>
 </body>
 </html>
+
+
 
 
 
