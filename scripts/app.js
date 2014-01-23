@@ -37,7 +37,7 @@ function InputDataCtrl($scope, $http) {
 			url : 'http://mtoserver.dyndns.org/mto/formToMail.php',
 			data : $("#" + formId).serialize(),
 			success : function(data) {
-				alert("success");
+				//alert("success");
 			}
 		});
 
