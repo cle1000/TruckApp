@@ -2,28 +2,25 @@ var app = angular.module('truckApp', []);
 
 function InputDataCtrl($scope, $http) {
 	$scope.loadData = function() {
-		$http
-				.jsonp(
-						'http://mtoserver.dyndns.org/mto/sql.php?callback=JSON_CALLBACK')
-				.then(function(response) {
-					$scope.inputDatas = response.data;
-				});
+		$http.jsonp('http://mtoserver.dyndns.org/mto/sql.php?callback=JSON_CALLBACK').then(function(response) {
+			$scope.inputDatas = response.data;
+		});
 	};
-	
-	$scope.setFirstStart = function () {
+
+	$scope.setFirstStart = function() {
 		window.localStorage.setItem("init", "1");
 	};
-	
-	$scope.setFirstStartBtn = function () {
+
+	$scope.setFirstStartBtn = function() {
 		$scope.setFirstStart();
 		document.location.hash = 'home';
 	};
-	
+
 	$scope.saveUserInfos = function() {
 		window.localStorage.setItem("name", $scope.username);
 		window.localStorage.setItem("telephone", $scope.userphone);
 	};
-	
+
 	$scope.saveUserInfosBtn = function() {
 		$scope.saveUserInfos();
 		$scope.setFirstStart();
@@ -42,22 +39,30 @@ function InputDataCtrl($scope, $http) {
 		 * });
 		 */
 
-		window.history.go(-1);
+		//window.history.go(-1);
+		document.location.hash = 'home';
 		showAlert("Die Mitarbeiter von MTO melden sich in Kürze", "Info");
 	};
 
 	$scope.setNameAndTelephone = function() {
-		$scope.username = window.localStorage.getItem("name");
-		$scope.userphone = window.localStorage.getItem("telephone");
+		var name = window.localStorage.getItem("name");
+		var phone = window.localStorage.getItem("telephone");
+		alert(name + " " + phone);
+		if (name == 'null' || name == 'undefined'){
+			name = '';
+		}
+		if (phone == 'null' || phone =='undefined'){
+			phone = '';
+		}
+		$scope.username = name;
+		$scope.userphone = phone; 
 	};
 
-
 	var init = window.localStorage.getItem("init");
-	
-	if (init == 1){
-		$(".first_start").remove();
+
+	if (init == 1) {
+		$(".first_start").attr('data-role', 'nopage');
 		$scope.setNameAndTelephone();
-		alert ("bla");
 	}
 
 	$scope.loadData();
@@ -67,6 +72,6 @@ function showAlert(message, title) {
 	if (navigator.notification) {
 		navigator.notification.alert(message, null, title, 'OK');
 	} else {
-		alert(title ? (title + ": " + message) : message);
+		alert( title ? (title + ": " + message) : message);
 	}
 }
