@@ -47,7 +47,7 @@ function InputDataCtrl($scope, $http) {
 	$scope.setNameAndTelephone = function() {
 		var name = window.localStorage.getItem("name");
 		var phone = window.localStorage.getItem("telephone");
-		alert(name + " " + phone);
+
 		if (name == 'null' || name == 'undefined'){
 			name = '';
 		}
@@ -61,7 +61,7 @@ function InputDataCtrl($scope, $http) {
 	var init = window.localStorage.getItem("init");
 
 	if (init == 1) {
-		$(".first_start").attr('data-role', 'nopage');
+		document.location.hash = "home";
 		$scope.setNameAndTelephone();
 	}
 
