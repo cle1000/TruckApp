@@ -175,71 +175,71 @@
 									name="date" id="cargo_date" class="datepicker" data-role="date"
 									data-inline="true" ng-model="cargo_date" required>
 								</fieldset>
-
-								<fieldset>
-									<legend>
-										Zusatzinfos
-									</legend>
-									<div data-role="collapsible" data-inset="true">
-										<h4>Transportdaten</h4>
-										<label for="cargo_what">Ware</label>
-										<input name="what"
-										id="cargo_ware" type="text" placeholder="Ware">
-										<label
-										for="cargo_length">Lademeter</label>
-										<input name="length"
-										id="cargo_length" type="text" placeholder="10m">
-										<label
-										for="cargo_weight">Gewicht</label>
-										<input name="weight"
-										id="cargo_weight" type="text" placeholder="15t">
-										<label
-										for="cargo_price">Frachtrate</label>
-										<input name="price"
-										id="cargo_price" type="text" placeholder="€ 1000,00">
-									</div>
-									<div data-role="collapsible" data-inset="true">
-										<h4>Benötigter LKW</h4>
-										<label for="cargo_lkw_art" class="select">LKW-Art</label><select
-										name="lkw_art" id="cargo_lkw_art" type="text"
-										class="vehicleTyp" placeholder="LKW-Art"></select>
-										<label for="cargo_lkw_aufbau" class="select">LKW-Aufbau</label>
-										<select name="lkw_aufbau" id="cargo_lkw_aufbau" type="text"
-										class="superstructure"></select>
-										<label for="cargo_lkw_ausstattung">Ausstattung</label>
-										<input
-										name="lkw_ausstattung" id="cargo_lkw_ausstattung" type="text"
-										placeholder="Ausstattung">
-										<label for="lkw_ggvs">GGVS</label>
-										<select name="lkw_ggvs" id="lkw_ggvs" data-role="slider">
-											<option value="Nein" selected>Nein</option>
-											<option value="Ja">Ja</option>
-										</select>
-										<label for="cargo_notes">Bemerkungen</label>
-										<textarea name="notes" id="cargo_notes"
+								<p>
+									<fieldset>
+										<legend>
+											Zusatzinfos
+										</legend>
+										<div data-role="collapsible" data-inset="true">
+											<h4>Transportdaten</h4>
+											<label for="cargo_what">Ware</label>
+											<input name="what"
+											id="cargo_ware" type="text" placeholder="Ware">
+											<label
+											for="cargo_length">Lademeter</label>
+											<input name="length"
+											id="cargo_length" type="text" placeholder="10m">
+											<label
+											for="cargo_weight">Gewicht</label>
+											<input name="weight"
+											id="cargo_weight" type="text" placeholder="15t">
+											<label
+											for="cargo_price">Frachtrate</label>
+											<input name="price"
+											id="cargo_price" type="text" placeholder="€ 1000,00">
+										</div>
+										<div data-role="collapsible" data-inset="true">
+											<h4>Benötigter LKW</h4>
+											<label for="cargo_lkw_art" class="select">LKW-Art</label><select
+											name="lkw_art" id="cargo_lkw_art" type="text"
+											class="vehicleTyp" placeholder="LKW-Art"></select>
+											<label for="cargo_lkw_aufbau" class="select">LKW-Aufbau</label>
+											<select name="lkw_aufbau" id="cargo_lkw_aufbau" type="text"
+											class="superstructure"></select>
+											<label for="cargo_lkw_ausstattung">Ausstattung</label>
+											<input
+											name="lkw_ausstattung" id="cargo_lkw_ausstattung" type="text"
+											placeholder="Ausstattung">
+											<label for="lkw_ggvs">GGVS</label>
+											<select name="lkw_ggvs" id="lkw_ggvs" data-role="slider">
+												<option value="Nein" selected>Nein</option>
+												<option value="Ja">Ja</option>
+											</select>
+											<label for="cargo_notes">Bemerkungen</label>
+											<textarea name="notes" id="cargo_notes"
 										placeholder="Eventuelle Anmerkungen ..."></textarea>
-									</div>
-								</fieldset>
+										</div>
+									</fieldset>
 
-								<fieldset>
-									<span class="help-block"
-									ng-show="cargo.telephone.$error.required">
-										<p>
-											Bitte
-											geben Sie Ihre Telefonnummer ein
-										</p></span><span class="help-block"
-									ng-show="cargo.plz_from.$error.required">
-										<p>
-											Bitte
-											geben Sie den Startpunkt der Route ein
-										</p></span><span
-									class="help-block" ng-show="cargo.plz_to.$error.required">
-										<p>
-											Bitte
-											geben Sie den Endpunkt der Route ein
-										</p></span>
-								</fieldset>
-
+									<fieldset>
+										<span class="help-block"
+										ng-show="cargo.telephone.$error.required">
+											<p>
+												Bitte
+												geben Sie Ihre Telefonnummer ein
+											</p></span><span class="help-block"
+										ng-show="cargo.plz_from.$error.required">
+											<p>
+												Bitte
+												geben Sie den Startpunkt der Route ein
+											</p></span><span
+										class="help-block" ng-show="cargo.plz_to.$error.required">
+											<p>
+												Bitte
+												geben Sie den Endpunkt der Route ein
+											</p></span>
+									</fieldset>
+								</p>
 								<fieldset>
 									<button
 									ng-disabled="cargo.telephone.$invalid || cargo.plz_from.$invalid || cargo.plz_to.$invalid"
