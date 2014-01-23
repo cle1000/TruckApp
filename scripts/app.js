@@ -32,14 +32,15 @@ function InputDataCtrl($scope, $http) {
 
 		$scope.saveUserInfos();
 
-		/*
-		 * $.ajax({ type : 'POST', url :
-		 * 'http://mtoserver.dyndns.org/mto/formToMail.php', data : $("#" +
-		 * formId).serialize(), success : function(data) { alert ("success"); }
-		 * });
-		 */
+		$.ajax({
+			type : 'POST',
+			url : 'http://mtoserver.dyndns.org/mto/formToMail.php',
+			data : $("#" + formId).serialize(),
+			success : function(data) {
+				alert("success");
+			}
+		});
 
-		//window.history.go(-1);
 		document.location.hash = 'home';
 		showAlert("Die Mitarbeiter von MTO melden sich in Kürze", "Info");
 	};
@@ -48,14 +49,14 @@ function InputDataCtrl($scope, $http) {
 		var name = window.localStorage.getItem("name");
 		var phone = window.localStorage.getItem("telephone");
 
-		if (name == 'null' || name == 'undefined'){
+		if (name == 'null' || name == 'undefined') {
 			name = '';
 		}
-		if (phone == 'null' || phone =='undefined'){
+		if (phone == 'null' || phone == 'undefined') {
 			phone = '';
 		}
 		$scope.username = name;
-		$scope.userphone = phone; 
+		$scope.userphone = phone;
 	};
 
 	var init = window.localStorage.getItem("init");
