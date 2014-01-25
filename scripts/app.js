@@ -2,7 +2,8 @@ var app = angular.module('truckApp', []);
 
 function InputDataCtrl($scope, $http) {
 	$scope.goHome = function (){
-		$.mobile.changePage("#home");
+		$.mobile.changePage("index1.html#home");
+		$scope.$apply();
 	};
 
 	$scope.loadData = function() {
@@ -41,7 +42,6 @@ function InputDataCtrl($scope, $http) {
 			url : 'http://mtoserver.dyndns.org/mto/formToMail.php',
 			data : $("#" + formId).serialize(),
 			success : function(data) {
-				//alert("success");
 			}
 		});
 
@@ -65,12 +65,14 @@ function InputDataCtrl($scope, $http) {
 
 	var init = window.localStorage.getItem("init");
 
+	$scope.loadData();
+
 	if (init == 1) {
-		$scope.goHome();
 		$scope.setNameAndTelephone();
+		$('.first_start').attr("data-role","nopage");
 	}
 
-	$scope.loadData();
+
 }
 
 function showAlert(message, title) {
