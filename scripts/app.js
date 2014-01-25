@@ -1,6 +1,10 @@
 var app = angular.module('truckApp', []);
 
 function InputDataCtrl($scope, $http) {
+	$scope.goHome = function (){
+		$.mobile.changePage("#home");
+	};
+
 	$scope.loadData = function() {
 		$http.jsonp('http://mtoserver.dyndns.org/mto/sql.php?callback=JSON_CALLBACK').then(function(response) {
 			$scope.inputDatas = response.data;
@@ -13,7 +17,7 @@ function InputDataCtrl($scope, $http) {
 
 	$scope.setFirstStartBtn = function() {
 		$scope.setFirstStart();
-		document.location = '#home';
+		$scope.goHome();
 	};
 
 	$scope.saveUserInfos = function() {
@@ -24,7 +28,7 @@ function InputDataCtrl($scope, $http) {
 	$scope.saveUserInfosBtn = function() {
 		$scope.saveUserInfos();
 		$scope.setFirstStart();
-		document.location = '#home';
+		$scope.goHome();
 	};
 
 	$scope.sendData = function(formId) {
@@ -41,7 +45,7 @@ function InputDataCtrl($scope, $http) {
 			}
 		});
 
-		document.location.hash = 'home';
+		$scope.goHome();
 		showAlert("Die Mitarbeiter von MTO melden sich in Kürze", "Info");
 	};
 
@@ -62,7 +66,7 @@ function InputDataCtrl($scope, $http) {
 	var init = window.localStorage.getItem("init");
 
 	if (init == 1) {
-		document.location = "#home";
+		$scope.goHome();
 		$scope.setNameAndTelephone();
 	}
 
