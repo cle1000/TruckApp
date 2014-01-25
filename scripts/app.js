@@ -13,7 +13,7 @@ function InputDataCtrl($scope, $http) {
 
 	$scope.setFirstStartBtn = function() {
 		$scope.setFirstStart();
-		document.location.hash = 'home';
+		document.location = '#home';
 	};
 
 	$scope.saveUserInfos = function() {
@@ -24,7 +24,7 @@ function InputDataCtrl($scope, $http) {
 	$scope.saveUserInfosBtn = function() {
 		$scope.saveUserInfos();
 		$scope.setFirstStart();
-		document.location.hash = 'home';
+		document.location = '#home';
 	};
 
 	$scope.sendData = function(formId) {
@@ -62,7 +62,7 @@ function InputDataCtrl($scope, $http) {
 	var init = window.localStorage.getItem("init");
 
 	if (init == 1) {
-		document.location.hash = "home";
+		document.location = "#home";
 		$scope.setNameAndTelephone();
 	}
 
