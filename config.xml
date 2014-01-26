@@ -2,7 +2,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "MTO"
-        versionCode="10"
+        versionCode="1.0"
         version   = "1">
 
 	<icon src="img/icon-48-mdpi.png" />
