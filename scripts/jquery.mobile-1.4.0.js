@@ -2357,7 +2357,8 @@ if ( !$.support.boxShadow ) {
 			// browsers that auto	decode it. All references to location.href should be
 			// replaced with a call to this method so that it can be dealt with properly here
 			getLocation: function( url ) {
-				var uri = this.parseUrl( url || location.href ), hash = uri.hash;
+				var url = this.parseUrl( url || location.href ),
+					hash = url.hash;
 
 				// mimic the browser with an empty string when the hash is empty
 				hash = hash === "#" ? "" : hash;
@@ -2365,7 +2366,7 @@ if ( !$.support.boxShadow ) {
 				// Make sure to parse the url or the location object for the hash because using location.hash
 				// is autodecoded in firefox, the rest of the url should be from the object (location unless
 				// we're testing) to avoid the inclusion of the authority
-				return uri.protocol + uri.doubleSlash + uri.host + uri.pathname + uri.search + hash;
+				return url.protocol + "//" + url.host + url.pathname + url.search + hash;
 			},
 
 			//return the original document url

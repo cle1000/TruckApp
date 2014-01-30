@@ -2,11 +2,7 @@ var app = angular.module('truckApp', []);
 
 function InputDataCtrl($scope, $http) {
 	$scope.goHome = function (){
-		//$.mobile.changePage('index1.html#home');
-		var url = window.location.href;
-		url = url.split('#').pop().split('?').pop();
-		url = url.replace(url.substring(url.lastIndexOf('/') + 1),"index1.html#home");
-		$.mobile.changePage(url, { reloadPage : false, changeHash : false });
+		$.mobile.changePage('index1.html#home');
 	};
 
 	$scope.loadData = function() {
@@ -72,7 +68,7 @@ function InputDataCtrl($scope, $http) {
 
 	if (init == 1) {
 		$scope.setNameAndTelephone();
-		$('.first_start').attr("data-role","nopage");
+		//$('.first_start').attr("data-role","nopage");
 	}
 
 
