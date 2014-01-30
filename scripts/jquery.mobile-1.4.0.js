@@ -2366,7 +2366,7 @@ if ( !$.support.boxShadow ) {
 				// Make sure to parse the url or the location object for the hash because using location.hash
 				// is autodecoded in firefox, the rest of the url should be from the object (location unless
 				// we're testing) to avoid the inclusion of the authority
-				return url.protocol + "//" + url.host + url.pathname + url.search + hash;
+				return  url.protocol + url.doubleSlash + url.host + url.pathname + url.search + hash;
 			},
 
 			//return the original document url
