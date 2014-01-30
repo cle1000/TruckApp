@@ -72,7 +72,7 @@ function InputDataCtrl($scope, $http) {
 
 	if (init == 1) {
 		$scope.setNameAndTelephone();
-		//$('.first_start').attr("data-role","nopage");
+		$('.first_start').attr("data-role","nopage");
 	}
 
 
