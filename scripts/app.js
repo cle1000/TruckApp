@@ -2,18 +2,7 @@ var app = angular.module('truckApp', []);
 
 function InputDataCtrl($scope, $http) {
 	$scope.goHome = function (){
-		//window.location ="#home";
-		if($.mobile.path.getLocation("x-wmapp1:/app/www/index.html") != "x-wmapp1:/app/www/index.html")
-		{
-    		alert('there is path problem');
-		}
-		else
-		{
-    		alert('everything is OK with paths');
-		}
-		
-		//location.reload();
-		//alert("hallo");
+		$.mobile.changePage("#home");
 	};
 
 	$scope.loadData = function() {
@@ -77,10 +66,10 @@ function InputDataCtrl($scope, $http) {
 
 	$scope.loadData();
 
-	//if (init == 1) {
-		//$scope.setNameAndTelephone();
+	if (init == 1) {
+		$scope.setNameAndTelephone();
 		$('.first_start').attr("data-role","nopage");
-	//}
+	}
 
 
 }
