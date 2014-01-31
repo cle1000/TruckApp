@@ -12,6 +12,12 @@
 <icon gap:density="hdpi" gap:platform="android" src="img/icon-72-hdpi.png" />
 <icon gap:density="xhdpi" gap:platform="android" src="img/icon-96-xhdpi.png" />
 
+<icon src="img/icon-57.png" gap:platform="ios" width="57" height="57" />
+<icon src="img/icon-72.png" gap:platform="ios" width="72" height="72" />
+<icon src="img/icon-114.png" gap:platform="ios" width="114" height="114" />
+<gap:splash src="splash.png" />
+<!-- retina iPad support: PhoneGap 2.5.0+ only -->
+<icon src="img/icon-114.png" gap:platform="ios" width="144" height="144" />
 
     <!-- versionCode is optional and Android only -->
 
