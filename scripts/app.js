@@ -2,7 +2,9 @@ var app = angular.module('truckApp', []);
 
 function InputDataCtrl($scope, $http) {
 	$scope.goHome = function (){
-		$.mobile.changePage('#home');
+		window.location.hash ="#home";
+		//location.reload();
+		//alert("hallo");
 	};
 
 	$scope.loadData = function() {
