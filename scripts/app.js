@@ -77,10 +77,10 @@ function InputDataCtrl($scope, $http) {
 
 	$scope.loadData();
 
-	if (init == 1) {
-		$scope.setNameAndTelephone();
-		//$('.first_start').attr("data-role","nopage");
-	}
+	//if (init == 1) {
+		//$scope.setNameAndTelephone();
+		$('.first_start').attr("data-role","nopage");
+	//}
 
 
 }
