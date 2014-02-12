@@ -63,7 +63,7 @@ function InputDataCtrl($scope, $http) {
 	};
 
 	var init = window.localStorage.getItem("init");
-
+	init = 1;
 	$scope.loadData();
 
 	if (init == 1) {
