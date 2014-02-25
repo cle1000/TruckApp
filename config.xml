@@ -47,6 +47,7 @@
     <!--access origin="http://mtoserver.dyndns.org/mto/sql.php" subdomains="true" />
     <access origin="http://mtoserver.dyndns.org/" subdomains="true" /-->
   <preference name="permissions" value="none"/>
+<plugin name="Notification" value="org.apache.cordova.notification.Notification" />
 
 
 <gap:platform name="ios" />
