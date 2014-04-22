@@ -9,6 +9,7 @@ function showAlert(message, title) {
 }
 
 function InputDataCtrl($scope, $http) {
+
     $scope.goHome = function() {
         $.mobile.changePage("#home");
     };
@@ -19,25 +20,12 @@ function InputDataCtrl($scope, $http) {
         });
     };
 
-    $scope.setFirstStart = function() {
-        window.localStorage.setItem("init", "1");
-    };
-
-    $scope.setFirstStartBtn = function() {
-        $scope.setFirstStart();
-        $scope.goHome();
-    };
 
     $scope.saveUserInfos = function() {
         window.localStorage.setItem("name", $scope.username);
         window.localStorage.setItem("telephone", $scope.userphone);
     };
 
-    $scope.saveUserInfosBtn = function() {
-        $scope.saveUserInfos();
-        $scope.setFirstStart();
-        $scope.goHome();
-    };
 
     $scope.sendData = function(formId) {
         var form = document.getElementById(formId);
@@ -70,13 +58,7 @@ function InputDataCtrl($scope, $http) {
         $scope.username = name;
         $scope.userphone = phone;
     };
-
-    var init = window.localStorage.getItem("init");
-    init = 1;
     $scope.loadData();
+    $scope.setNameAndTelephone();
 
-    if (init == 1) {
-        $scope.setNameAndTelephone();
-        $('.first_start').attr("data-role", "nopage");
-    }
 }

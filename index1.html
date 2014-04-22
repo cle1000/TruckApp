@@ -27,53 +27,12 @@
 		</div>
 
 		<span id="fastclick">
-			<div data-role="page" id="first_start" class="first_start">
+			<div data-role="page main" id="first_start" class="first_start">
 
 				<div data-role="header" data-position="fixed">
 					<h1>mto</h1>
 				</div>
 				<!-- /header -->
-				<div role="main" class="ui-content">
-					<div
-					class="ui-collapsible-set ui-collapsible ui-collapsible-themed-content ui-collapsible-inset ui-corner-all">
-						<div data-insert="true"
-						class="ui-collapsible-content ui-body-inherit">
-							<form class="css-form" method="post" 
-							id="first_infos" name="first_infos" novalidate>
-								<fieldset>
-									<legend class="first">
-										Ihre Daten...
-									</legend>
-									<label for="name_input" class="required">Name</label>
-									<input
-									name="name" ng-model="username" id="name_input" type="text"
-									placeholder="Name" required />
-									<label for="telephone_input"
-									class="required">Telefon</label>
-									<input name="telephone"
-									ng-model="userphone" id="telephone_input" type="tel"
-									placeholder="Telefon" required />
-								</fieldset>
-								<div class="ui-grid-a">
-									<div class="ui-block-a">
-										<button 
-										ng-disabled="first_infos.name.$invalid || first_infos.telephone.$invalid"
-										class="ui-shadow ui-btn ui-corner-all" type="submit"
-										ng-click="saveUserInfosBtn()"  id="submit_input">
-											Speichern
-										</button>
-									</div>
-									<div class="ui-block-b">
-										<button class="ui-shadow ui-btn ui-corner-all" type="submit"
-										ng-click="setFirstStartBtn()" id="submit_input">
-											Überspringen
-										</button>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
 			</div>
 			<div class="home" data-role="page" id="home">
 				<div data-role="header" data-position="fixed">
