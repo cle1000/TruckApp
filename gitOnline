@@ -1,12 +1,4 @@
-git add fonts/*
-git add *.png
-git add *.img
-git add *.gif
-git add *.xml
-git add *.php
-git add *.html
-git add *.css
-git add *.js
+git add --all
 git commit -m "auto"
 git push -u https://github.com/cle1000/TruckApp master
 
